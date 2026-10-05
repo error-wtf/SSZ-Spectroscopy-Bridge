@@ -1,0 +1,51 @@
+{
+ "audit": "NICER_V4_RELOCK_CHECK",
+ "checks": [
+  {
+   "check": "observed_catalog_sha_roundtrip",
+   "pass": true,
+   "sha": "4ce23452279def78..."
+  },
+  {
+   "check": "observed_catalog_empty_while_qnm_blocked",
+   "pass": true,
+   "n_modes": 0,
+   "interpretation": "empty catalogue is the CORRECT empirical state while qnm_claims_allowed=false (V4: H3 fired on hairy branches, health clause blocked at B6/B8)"
+  },
+  {
+   "check": "stage_a_sha_relock",
+   "pass": true,
+   "n_ok": 21,
+   "n_bad": 0
+  },
+  {
+   "check": "e2e_machine_report_readable",
+   "pass": true,
+   "top_keys": [
+    "artifact",
+    "created_utc_note",
+    "workspace",
+    "verdict",
+    "data",
+    "stage_a",
+    "controls",
+    "frozen_artifacts",
+    "reproducibility",
+    "ontime_deltas_per_obsid"
+   ]
+  },
+  {
+   "check": "theory_state_record",
+   "pass": true,
+   "v4_law": "G4 = 1/2 + a1 (phi - 1)",
+   "v4_n4_verdicts": [
+    "H3_PHYSICAL_GHOST"
+   ],
+   "closure_head": "384700c (CI 2x success)",
+   "bridge_head": "0d63aad (G154 PASS 2.1e-5, CI success)",
+   "qnm_claims_allowed": false,
+   "empirical_state": "legitimately empty observed catalogue"
+  }
+ ],
+ "all_pass": true
+}

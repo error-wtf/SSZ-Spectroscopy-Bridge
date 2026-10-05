@@ -1,0 +1,19 @@
+{
+ "audit": "G160_PRE_WAVEFORM_CLOSURE_V1",
+ "n_modes": 10,
+ "window": [
+  82.0,
+  102.0
+ ],
+ "rel_L2_residual_window": 0.006798905007662962,
+ "late_power_law_exponent": -11.866086114995227,
+ "leading_mode_M_omega": [
+  0.3736535452016666,
+  -0.08897118203177629
+ ],
+ "leading_mode_err": 1.9894678254215036e-05,
+ "g160_pre_pass": true,
+ "criterion": "window < 5e-2 (frozen); late-time tail is a power law (Price), recorded as exponent, excluded from the exponential-residual criterion by physics",
+ "note": "G160 proper (certified-mode waveform + detector response closure) requires G155; this is the waveform-level consistency of the extraction itself.",
+ "wall_seconds": 1.5
+}

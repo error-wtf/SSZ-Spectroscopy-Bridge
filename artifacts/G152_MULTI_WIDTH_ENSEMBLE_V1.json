@@ -1,0 +1,63 @@
+{
+ "audit": "G152_MULTI_WIDTH_ENSEMBLE_V1",
+ "reference": [
+  0.37367,
+  -0.08896
+ ],
+ "runs": [
+  {
+   "pulse_sigma": 1.0,
+   "omega": [
+    0.7472890826226336,
+    -0.17792143954257997
+   ],
+   "M_omega": [
+    0.3736445413113168,
+    -0.08896071977128998
+   ],
+   "err": 2.5468861383618494e-05
+  },
+  {
+   "pulse_sigma": 1.5,
+   "omega": [
+    0.7473019072650798,
+    -0.1779029405030782
+   ],
+   "M_omega": [
+    0.3736509536325399,
+    -0.0889514702515391
+   ],
+   "err": 2.086913324100373e-05
+  },
+  {
+   "pulse_sigma": 2.5,
+   "omega": [
+    0.7470710116606741,
+    -0.17761257965102398
+   ],
+   "M_omega": [
+    0.37353550583033707,
+    -0.08880628982551199
+   ],
+   "err": 0.0002042437255204099
+  }
+ ],
+ "consensus_M_omega": [
+  0.3736445413113168,
+  -0.0889514702515391
+ ],
+ "consensus_err": 2.6849607786227895e-05,
+ "max_pairwise_spread": 0.00018904323385267405,
+ "gates": {
+  "G152_solver_agreement": {
+   "pass": true,
+   "criterion": "consensus err < 0.0001 AND pairwise spread < 0.0002",
+   "measured": {
+    "consensus_err": 2.6849607786227895e-05,
+    "pairwise": 0.00018904323385267405
+   },
+   "note": "Estimator A (pencil, sigma=1.5) and Estimator B (width-ensemble consensus) are structurally different extraction families on the same evolution kernel; the frequency-domain collocation stays OPEN and is documented."
+  }
+ },
+ "wall_seconds": 7.8
+}

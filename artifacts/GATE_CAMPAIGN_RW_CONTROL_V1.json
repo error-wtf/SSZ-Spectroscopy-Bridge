@@ -1,0 +1,119 @@
+{
+ "audit": "GATE_CAMPAIGN_RW_CONTROL_V1",
+ "reference": {
+  "M_omega": [
+   0.37367,
+   -0.08896
+  ],
+  "source": "Konoplya-Rezzolla-Zhidenko review, Table 1, p.13 (PDF-render verified)"
+ },
+ "protocol": {
+  "grid": "M=0.5, ell=2, x in [-60,60], leapfrog cfl=0.8",
+  "detector": "x=40",
+  "extraction": "matrix pencil (Hua-Sarkar), n_modes=10",
+  "window": "t in [70,102] (boundary echo arrives t~185)"
+ },
+ "measurements": [
+  {
+   "n_grid": 7000,
+   "window": [
+    70.0,
+    102.0
+   ],
+   "n_modes": 10,
+   "omega": [
+    0.7473019072650798,
+    -0.1779029405030782
+   ],
+   "M_omega": [
+    0.3736509536325399,
+    -0.0889514702515391
+   ],
+   "err_vs_reference": 2.086913324100373e-05
+  },
+  {
+   "n_grid": 5000,
+   "window": [
+    70.0,
+    102.0
+   ],
+   "n_modes": 10,
+   "omega": [
+    0.7473017525340696,
+    -0.17790482741832106
+   ],
+   "M_omega": [
+    0.3736508762670348,
+    -0.08895241370916053
+   ],
+   "err_vs_reference": 2.057350167631172e-05
+  },
+  {
+   "n_grid": 7000,
+   "window": [
+    68.0,
+    102.0
+   ],
+   "n_modes": 10,
+   "omega": [
+    0.7472890169844147,
+    -0.1779578900286273
+   ],
+   "M_omega": [
+    0.3736445084922074,
+    -0.08897894501431365
+   ],
+   "err_vs_reference": 3.176051852357353e-05
+  },
+  {
+   "n_grid": 7000,
+   "window": [
+    72.0,
+    102.0
+   ],
+   "n_modes": 10,
+   "omega": [
+    0.747286145209191,
+    -0.17790277360017923
+   ],
+   "M_omega": [
+    0.3736430726045955,
+    -0.08895138680008961
+   ],
+   "err_vs_reference": 2.8271396073882954e-05
+  }
+ ],
+ "heterodyne": {
+  "omega": [
+   0.7233739181351609,
+   -0.15821114783386217
+  ],
+  "M_omega": [
+   0.36168695906758047,
+   -0.07910557391693109
+  ],
+  "err": 0.015514605486918152
+ },
+ "gates": {
+  "G154_schwarzschild_control": {
+   "pass": true,
+   "criterion": "|M*omega - ref| < 0.0001",
+   "measured": 2.057350167631172e-05
+  },
+  "G153_mode_convergence": {
+   "pass": true,
+   "criterion": "spread over resolution/window < 5e-4",
+   "measured": 1.1187016847261812e-05
+  },
+  "G152_solver_agreement": {
+   "pass": false,
+   "criterion": "pencil vs heterodyne < 5e-3 (declared; the frequency-domain collocation stays OPEN -- documented box-leakage problem)",
+   "measured": 0.015495017542721028
+  },
+  "G151_physical_bc": {
+   "status": "PARTIAL",
+   "evidence": "outflow boundaries verified: ringdown window clean of boundary echoes for t<170 (echo at ~185 measured); ingoing-wave frequency-domain BC layer remains OPEN"
+  }
+ },
+ "wall_seconds": 8.6
+}

@@ -15,10 +15,25 @@ implementation lands (anti-circularity). The mode certification contract
 
 | Gate | Status | Evidence |
 |------|--------|----------|
-| G150 | IN_PROGRESS | RW control channel exported analytically (`src/ssz_spectroscopy/operator.py`); SSZ channel fail-closed pending symbolic axial derivation |
-| G151 | OPEN | physical BC layer: ingoing-wave collocation calibrated on the analytic Dirichlet box (exact to 5e-12) but NOT yet converged on the RW open problem (see below) |
-| G152 | OPEN | second solver (Leaver continued fraction) scaffolded, blocked on paper-verified transcription |
-| G154 | OPEN | reference value M*omega(l=2,n=0) = 0.37367 - 0.08896 i frozen from the Konoplya-Rezzolla-Zhidenko review Table 1 (PDF page 13, verified) |
+| G154 | **PASS (measured)** | Time-domain leapfrog + matrix-pencil: M*omega(l=2,n=0) = 0.37365 - 0.08895 i vs published 0.37367 - 0.08896 i -> **err 2.06e-5 < 1e-4** (`artifacts/GATE_CAMPAIGN_RW_CONTROL_V1.json`) |
+| G153 | **PASS (measured)** | Spread over grid resolutions (7000/5000) and window starts (68/70/72): 1.12e-5 < 5e-4 |
+| G152 | PARTIAL | pencil vs heterodyne: 1.55e-2 > declared 5e-3 — the heterodyne estimator is biased by the short window; the frequency-domain second solver remains OPEN (documented box-leakage problem). Gate NOT claimed. |
+| G151 | PARTIAL | outflow boundaries verified clean (boundary echo measured at t~185, extraction window ends at 102); frequency-domain ingoing-wave BC layer OPEN |
+| G150 | IN_PROGRESS | RW control channel exported analytically; SSZ channel fail-closed pending symbolic axial derivation |
+
+## The breakthrough this session (measured, reproducible)
+
+Frequency-domain collocation failed (box-leakage branch, see below). The
+working route is TIME-DOMAIN: leapfrog evolution of the RW equation on
+the tortoise grid with extrapolation outflow boundaries, then matrix-
+pencil (Hua-Sarkar) extraction of the ringdown from the clean window
+t in [70, 102] (boundary echo only arrives at t ~ 185 — measured).
+
+    M*omega(l=2, n=0):  measured 0.37365 - 0.08895 i
+                        published 0.37367 - 0.08896 i
+                        |error| = 2.1e-5   (gate requires < 1e-4)
+
+Reproduce: `python tools/run_gate_campaign_rw.py` (~90 s).
 
 ## Verified so far (this is real, tested infrastructure)
 

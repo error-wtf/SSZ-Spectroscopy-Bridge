@@ -1,0 +1,28 @@
+{
+ "audit": "G151_LEAVER_FREQUENCY_DOMAIN_V1",
+ "solver": "leaver_continued_fraction (Leaver 1991 Eq.5 coefficients, Eq.9 condition)",
+ "validation": "reproduces Berti ringdown tables (s2l2/s0l0, table err ~1e-12) to <=4e-15 (tests/unit/test_leaver.py, 9 cases)",
+ "units": "c=G=2M=1; M*omega = omega/2",
+ "result": {
+  "omega_2M1": [
+   0.7473433688360837,
+   -0.1779246313778714
+  ],
+  "M_omega": [
+   0.3736716844180418,
+   -0.0889623156889357
+  ],
+  "err_vs_published_M_omega": 2.863508230573631e-06,
+  "cf_misfit": 5.204170427930421e-17,
+  "converged": true
+ },
+ "cross_check_time_domain": {
+  "pencil_M_omega": [
+   0.3736509536325399,
+   -0.0889514702515391
+  ],
+  "pencil_minus_leaver": 2.3396345437905176e-05,
+  "note": "time-domain pencil carries O(grid) truncation error; Leaver CF is the gold standard"
+ },
+ "wall_seconds": 0.9
+}

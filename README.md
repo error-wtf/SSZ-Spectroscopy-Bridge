@@ -19,7 +19,8 @@ implementation lands (anti-circularity). The mode certification contract
 | G152 | **PASS (ensemble)** | multi-width consensus 2.68e-5, pairwise 1.89e-4 (`artifacts/G152_MULTI_WIDTH_ENSEMBLE_V1.json`) |
 | G153 | **PASS (measured)** | Time-domain leapfrog + matrix-pencil: M*omega(l=2,n=0) = 0.37365 - 0.08895 i vs published 0.37367 - 0.08896 i -> **err 2.06e-5 < 1e-4** (`artifacts/GATE_CAMPAIGN_RW_CONTROL_V1.json`) |
 | G153 | **PASS (measured)** | Spread over grid resolutions (7000/5000) and window starts (68/70/72): 1.12e-5 < 5e-4 |
-| G151 | PARTIAL | outflow boundaries verified clean (boundary echo measured at t~185, extraction window ends at 102); frequency-domain ingoing-wave BC layer OPEN |
+| G151 | **PASS (frequency-domain)** | Leaver continued-fraction solver (Leaver 1991 Eq.5 coefficients, Eq.9 condition): M*omega(l=2,n=0) = 0.37367168 - 0.08896232 i, CF misfit 5.2e-17; validated against Berti's ringdown tables to <= 4e-15 on 6 modes (`artifacts/G151_LEAVER_FREQUENCY_DOMAIN_V1.json`, `tests/unit/test_leaver.py`) |
+| G151 | **PASS (cross-solver)** | frequency-domain Leaver vs time-domain pencil agree to 2.34e-5 (pencil carries the O(grid) truncation; Leaver is the gold standard) |
 
 ## The breakthrough this session (measured, reproducible)
 
@@ -54,9 +55,9 @@ xR).  The Dirichlet-box calibration proves the linearisation is exact,
 so the defect is in the boundary-condition treatment of the open
 problem.  Next declared attack paths:
 
-1. Leaver continued fraction (gold standard, no BC approximation),
-   blocked on a paper-verified transcription of the three-term
-   recurrence (Leaver 1985).
+1. ~~Leaver continued fraction~~ DONE: `continued_fraction.py` now carries
+   the paper-verified transcription (Leaver 1991 Eq.5, exact coefficients)
+   and reproduces Berti's tables to <= 4e-15 (`tests/unit/test_leaver.py`).
 2. Hyperboloidal/mirror-shifted compactification of the collocation
    grid.
 3. Direct time-domain evolution with a pulsation extraction
@@ -71,7 +72,7 @@ number look right.
         operator.py              (RW control: exact; SSZ: fail-closed)
         shooting.py              (solver A2, Wronskian shooting)
         spectral_collocation.py  (solver B, Chebyshev quadratic EVP)
-        continued_fraction.py    (solver A1, Leaver — scaffold)
+        continued_fraction.py    (solver A1, Leaver CF — validated vs Berti tables)
         control_problems.py      (analytic references)
     docs/GATES_MANIFEST.json
     docs/MODE_CERTIFICATION_CONTRACT.md

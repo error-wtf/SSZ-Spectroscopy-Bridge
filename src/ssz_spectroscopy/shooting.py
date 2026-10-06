@@ -28,20 +28,19 @@ def _ingoing_mismatch(omega: complex, x: np.ndarray, V: np.ndarray,
 
     # horizon side: psi = exp(-i w x) -> psi' = -i w psi
     y0_l = [1.0, -1j * omega]
-    sol_l = solve_ivp(rhs, (x[0], x_match), y0_l, method="RK4",
+    sol_l = solve_ivp(rhs, (x[0], x_match), y0_l, method="RK45",
                       t_eval=None, rtol=1e-10, atol=1e-12, dense_output=False)
-    # infinity side: psi = exp(+i w (x - x[-1]))
-    y0_r = [1.0, 1j * omega]
-    _sol_r = solve_ivp(rhs, (x[-1], x_match), y0_r, method="RK4",
-                      rtol=1e-10, atol=1e-12)
 
+    # infinity side, integrated BACKWARD to x_match:
+    # ingoing at +inf: psi ~ exp(+i w (x - x[-1])) -> psi'(x[-1]) = +i w psi
+    # y = [psi, psi']; with s running downward, y' = [-psi', -(V - w^2) psi].
     def rhs_back(xv, y):
         return [-y[1], -(V(xv) - omega**2) * y[0]]
 
-    sol_rb = solve_ivp(rhs_back, (x[-1], x_match), [1.0, -1j * omega],
-                       method="RK4", rtol=1e-10, atol=1e-12)
+    sol_rb = solve_ivp(rhs_back, (x[-1], x_match), [1.0, 1j * omega],
+                       method="RK45", rtol=1e-10, atol=1e-12)
     psi_l, dpsi_l = sol_l.y[0][-1], sol_l.y[1][-1]
-    psi_r, dpsi_r = sol_rb.y[0][-1], -sol_rb.y[1][-1]
+    psi_r, dpsi_r = sol_rb.y[0][-1], sol_rb.y[1][-1]
     W = psi_l * dpsi_r - dpsi_l * psi_r
     scale = (abs(psi_l) * abs(dpsi_r) + abs(dpsi_l) * abs(psi_r))
     if scale == 0 or not np.isfinite(W):

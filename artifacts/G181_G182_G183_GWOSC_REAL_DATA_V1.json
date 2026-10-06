@@ -1,0 +1,46 @@
+{
+ "audit": "G181_G182_G183_GWOSC_REAL_DATA_V1",
+ "g181_provenance": {
+  "source": "GWOSC event API, GWTC-1-confident, GW150914-v3",
+  "files": {
+   "H1": {
+    "sha256_ok": true,
+    "samples": 131072,
+    "event_time_in_span": true
+   },
+   "L1": {
+    "sha256_ok": true,
+    "samples": 131072,
+    "event_time_in_span": true
+   }
+  },
+  "conditioning": "whitening: Tukey(alpha=0.2) + Welch PSD + zero-phase bandpass 35-350 Hz; window = event GPS +-0.25 s (declared catalog window, set before analysis)",
+  "pass": true
+ },
+ "g182_inference": {
+  "template_bank": "certified Leaver l=2 n=0 ringdown over final mass 30-120 Msun",
+  "results": {
+   "H1": {
+    "mass": 110.0,
+    "snr_peak": 6.138323805758196,
+    "f_decay_hz": 109.76586718211558
+   },
+   "L1": {
+    "mass": 62.0,
+    "snr_peak": 1.0896359092119747,
+    "f_decay_hz": 194.74589338762442
+   }
+  },
+  "snr_threshold": 8.0,
+  "detection": false,
+  "model_comparison_note": "RW template is the GR ringdown model; the SSZ channel is isospectral (G150 scope flag) \u2014 SSZ-vs-GR discrimination is structurally absent at this layer. Recorded honestly: Bayes proxy compares ringdown vs noise.",
+  "pass": false
+ },
+ "g183_stability": {
+  "m_h1": 110.0,
+  "m_l1": 62.0,
+  "agreement_10pct": false,
+  "pass": false
+ },
+ "wall_seconds": 8.9
+}

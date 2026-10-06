@@ -1,0 +1,28 @@
+{
+ "audit": "G160_CERTIFIED_WAVEFORM_CLOSURE_V1",
+ "certified_modes_used": [
+  [
+   0.7473433688360837,
+   -0.1779246313778714
+  ],
+  [
+   0.6934219937583269,
+   -0.5478297505824696
+  ],
+  [
+   0.6021069092247328,
+   -0.9565539664461437
+  ]
+ ],
+ "rel_L2_certified_frequencies": 0.006691307624336936,
+ "rel_L2_pencil_free": 0.006798905007662962,
+ "handicap_factor_limit": 3.0,
+ "leading_mode_vs_pencil_gap": 4.0380351958544574e-05,
+ "g160_pass": true,
+ "criteria": {
+  "certified_window": "< 0.05",
+  "handicap": "certified <= 3.0x pencil-free",
+  "leading_vs_pencil": "< 0.0001"
+ },
+ "wall_seconds": 1.5
+}

@@ -1,0 +1,28 @@
+{
+ "audit": "G190_EMPIRICAL_SPECTROSCOPY_VERDICT_V1",
+ "rule": "verdict A/B/C only if G150..G183 all PASS; any open predecessor forces BLOCKED",
+ "gate_status": {
+  "G150": "RECORDED",
+  "G151": "RECORDED",
+  "G152": "PASS",
+  "G153": "PASS",
+  "G154": "PASS",
+  "G155": "RECORDED",
+  "G160": "PASS",
+  "G170": "PASS",
+  "G171": "PASS",
+  "G180": "PASS",
+  "G181": "PASS",
+  "G182": "NOT_PASS (False)",
+  "G183": "NOT_PASS (False)",
+  "G161": "BLOCKED (requires closure eikonal layer, N3/N4-owned)"
+ },
+ "blockers": [
+  "G182",
+  "G183",
+  "G161"
+ ],
+ "verdict": "BLOCKED",
+ "scope_note": "G183 currently NOT_PASS: the single-damped-sinusoid template over the catalog final-mass bank does not give detector-stable mass estimates on real GW150914 data (H1 110 vs L1 62 Msun \u2014 merger-power leakage into the ringdown template). This is an honest infrastructure limit of the simplified template, not a physics result; G190 stays BLOCKED until a proper IMR-based ringdown filter replaces it.",
+ "recorded_utc": "2026-10-06T08:05:55Z"
+}

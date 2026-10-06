@@ -1,0 +1,23 @@
+{
+ "audit": "G180_DETECTOR_RESPONSE_CLOSURE_V1",
+ "detector": {
+  "name": "declared-LIGO-like",
+  "cos_iota": 0.5,
+  "ra_rad": 1.2,
+  "dec_rad": -0.4,
+  "psi_rad": 0.7,
+  "snr_target": 50.0
+ },
+ "antenna_amplitude": 0.25940312407296445,
+ "chain": "certified modes -> mode-sum h(t) -> antenna projection -> noise @ declared SNR -> d(t) -> pencil extraction",
+ "recovered_lead_mode": [
+  0.7473853470517403,
+  -0.1782706451474559
+ ],
+ "eps_solver_vs_certified": 0.00034855085616274464,
+ "tol_endtoend": 0.001,
+ "reconstruction_rel_L2": 0.02012339944863959,
+ "g180_pass": true,
+ "scope_note": "declared analytic antenna model; real instrument calibration enters at G181 (GWOSC public data)",
+ "wall_seconds": 1.5
+}

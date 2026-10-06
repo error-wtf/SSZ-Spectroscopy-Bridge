@@ -21,6 +21,16 @@ implementation lands (anti-circularity). The mode certification contract
 | G153 | **PASS (measured)** | Spread over grid resolutions (7000/5000) and window starts (68/70/72): 1.12e-5 < 5e-4 |
 | G151 | **PASS (frequency-domain)** | Two-part evidence: (1) Leaver continued-fraction solver (Leaver 1991 Eq.5, exact coefficients): M*omega(l=2,n=0) = 0.37367168 - 0.08896232 i, CF misfit 5.2e-17, validated against Berti's Leaver-method tables to <= 4e-15 on 6 modes (`artifacts/G151_LEAVER_FREQUENCY_DOMAIN_V1.json`, `tests/unit/test_leaver.py`); (2) factored shooting with the ANALYTIC Poschl-Teller reference (exact spectrum known in closed form, Cardona-Molina CQG 2017 Eq. 38): root recovered to 3.8e-9 with a measured convergence ladder (RK45 floor 8.6e-7 -> DOP853 1.6e-8 -> CubicSpline gap 5.0e-16) (`tests/unit/test_shooting_factored.py`) |
 | G151 | **PASS (cross-solver)** | frequency-domain Leaver vs time-domain pencil agree to 2.34e-5 (pencil carries the O(grid) truncation; Leaver is the gold standard) |
+| G155 | **PASS** | Certified RW control catalogue (MODE-C1..C8): 5/5 modes n=0..4 certified (Leaver CF, eps_residual <= 2.8e-12, eps_grid <= 2.9e-11), C6 analytic PT control 3.8e-9, C7 fake-mode rejection measured (`artifacts/RW_CONTROL_CERTIFIED_MODE_CATALOGUE_G155_V1.json`, `tools/run_g155_catalogue.py`) |
+| G160 | **PASS (full)** | waveform reconstructed FROM THE CERTIFIED MODE SET: rel-L2 0.67% in the clean window [82,102], certified-frequency fit beats the free-frequency pencil fit (0.669% vs 0.680%), leading mode vs pencil 4.0e-5 (`artifacts/G160_CERTIFIED_WAVEFORM_CLOSURE_V1.json`) |
+| G170 | **PASS** | blind mass recovery: hidden M (hash-committed) recovered to 0.5-2.8% in 3 noise realisations, detection threshold derived from the noise-only distribution BEFORE the trials (`artifacts/G170_G171_BLIND_AND_CONTROLS_V1.json`) |
+| G171 | **PASS** | wrong-model control: wrong-M chi2 strictly worse; noise-only stays below the derived threshold |
+| G180 | **PASS** | detector-response closure end-to-end on synthetic data: certified modes -> h(t) -> declared antenna pattern -> noise @ energy-SNR 50 -> d(t); pencil recovers the injected mode to 3.5e-4 (documented end-to-end tolerance; mode-sum truncation + noise) (`artifacts/G180_DETECTOR_RESPONSE_CLOSURE_V1.json`) |
+| G181 | **PASS** | GWOSC real data provenance: H1+L1 32s/4kHz GW150914 strain, SHA-256 sidecar locked, catalog GPS window, declared conditioning (Tukey/Welch/whiten/35-350Hz) (`artifacts/G181_G182_G183_GWOSC_REAL_DATA_V1.json`, `data/gwosc/`) |
+| G182 | NOT PASS | single-damped-sinusoid matched filter on real GW150914 H1/L1: H1 SNR 6.1 < 8, detection criterion failed with the simplified template — honest infrastructure limit |
+| G183 | NOT PASS | mass stability across detectors failed (H1 110 vs L1 62 Msun — merger-power leakage into the simplified ringdown template); needs an IMR-based filter |
+| G161 | BLOCKED | requires the closure eikonal layer (Xi->D->g->Phi transport); the bridge SSZ channel is SYMBOLIC_TEST_ONLY (isospectral, FailClosed) until N3/N4 |
+| G190 | **BLOCKED** | rule applied honestly: G182/G183 not passed, G161 structurally blocked -> verdict BLOCKED (recorded in `artifacts/G190_EMPIRICAL_SPECTROSCOPY_VERDICT_V1.json`) |
 
 ## The breakthrough this session (measured, reproducible)
 

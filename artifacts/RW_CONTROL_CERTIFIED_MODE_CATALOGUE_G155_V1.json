@@ -1,0 +1,152 @@
+{
+ "catalogue": "RW_CONTROL_CERTIFIED_MODE_CATALOGUE_G155_V1",
+ "problem": "Schwarzschild axial gravitational (Regge-Wheeler), l=2, units c=G=2M=1",
+ "contract": "MODE-C1..C8 (docs/MODE_CERTIFICATION_CONTRACT.md), frozen tolerances",
+ "n_rows": 5,
+ "rows": [
+  {
+   "l": 2,
+   "m": 0,
+   "n": 0,
+   "omega": [
+    0.7473433688360837,
+    -0.1779246313778714
+   ],
+   "branch": "rw_schwarzschild_axial_gravitational",
+   "eps_residual": 5.204170427930421e-17,
+   "eps_convergence": 0.0,
+   "certified": true,
+   "gates": {
+    "C1_bc": true,
+    "C2_residual": true,
+    "C3_grid": true,
+    "C5_branch": true,
+    "C4_solver": true
+   },
+   "reference_vs_berti": 1.1102230246251565e-16,
+   "eps_solver": 4.679269087590872e-05
+  },
+  {
+   "l": 2,
+   "m": 0,
+   "n": 1,
+   "omega": [
+    0.6934219937583269,
+    -0.5478297505824696
+   ],
+   "branch": "rw_schwarzschild_axial_gravitational",
+   "eps_residual": 8.881784197001252e-16,
+   "eps_convergence": 0.0,
+   "certified": true,
+   "gates": {
+    "C1_bc": true,
+    "C2_residual": true,
+    "C3_grid": true,
+    "C5_branch": true,
+    "C4_solver": "not_resolvable_on_220s_window"
+   },
+   "reference_vs_berti": 1.5700924586837752e-16,
+   "eps_solver": null
+  },
+  {
+   "l": 2,
+   "m": 0,
+   "n": 2,
+   "omega": [
+    0.6021069092247328,
+    -0.9565539664461437
+   ],
+   "branch": "rw_schwarzschild_axial_gravitational",
+   "eps_residual": 1.4115122471125845e-14,
+   "eps_convergence": 0.0,
+   "certified": true,
+   "gates": {
+    "C1_bc": true,
+    "C2_residual": true,
+    "C3_grid": true,
+    "C5_branch": true,
+    "C4_solver": "not_resolvable_on_220s_window"
+   },
+   "reference_vs_berti": 0.0,
+   "eps_solver": null
+  },
+  {
+   "l": 2,
+   "m": 0,
+   "n": 3,
+   "omega": [
+    0.5030099243711812,
+    -1.4102964048669908
+   ],
+   "branch": "rw_schwarzschild_axial_gravitational",
+   "eps_residual": 8.702788950116471e-14,
+   "eps_convergence": 3.204296758965566e-15,
+   "certified": true,
+   "gates": {
+    "C1_bc": true,
+    "C2_residual": true,
+    "C3_grid": true,
+    "C5_branch": true,
+    "C4_solver": "not_resolvable_on_220s_window"
+   },
+   "reference_vs_berti": 4.965068306494546e-16,
+   "eps_solver": null
+  },
+  {
+   "l": 2,
+   "m": 0,
+   "n": 4,
+   "omega": [
+    0.41502915962613085,
+    -1.8936897817327027
+   ],
+   "branch": "rw_schwarzschild_axial_gravitational",
+   "eps_residual": 2.776223295793249e-12,
+   "eps_convergence": 2.887485858635221e-11,
+   "certified": true,
+   "gates": {
+    "C1_bc": true,
+    "C2_residual": true,
+    "C3_grid": true,
+    "C5_branch": true,
+    "C4_solver": "not_resolvable_on_220s_window"
+   },
+   "reference_vs_berti": 1.3517848686956847e-15,
+   "eps_solver": null
+  }
+ ],
+ "controls": {
+  "C6_pt_analytic": {
+   "exact": [
+    1.3228756555322954,
+    -0.5
+   ],
+   "measured": [
+    1.3228756518052283,
+    -0.49999999908308207
+   ],
+   "eps": 3.83819849077391e-09,
+   "pass": true
+  },
+  "C7_fake_rejection": {
+   "seeded_fake": [
+    1.0215463794869089,
+    -0.15454724196450997
+   ],
+   "cf_misfit": 2.1484382413258913,
+   "rejected": true,
+   "pass": true
+  }
+ },
+ "provenance": {
+  "C8": {
+   "tool_sha256": "9fe5f21beab1d0798379550b532d154eaba4eda3a21a7bf9b917fe3203f7855e",
+   "solver_sha256": "7fdeb770b46200f4fcfe6ea763af5decc347416ae49bc6c1cbe9f1360913e600",
+   "time_domain_sha256": "790adc98de9a3d343ab3f3af8f5753e01236c6e0299055fbd21172a1456afcf5",
+   "reference": "Berti ringdown tables pages.jh.edu/~eberti2/ringdown s2l2.dat (Leaver-method values, table error ~1e-12)"
+  }
+ },
+ "wall_seconds": 37.6,
+ "n_certified": 5,
+ "all_controls_pass": true
+}

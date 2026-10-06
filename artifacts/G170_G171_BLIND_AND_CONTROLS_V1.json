@@ -1,0 +1,58 @@
+{
+ "audit": "G170_G171_BLIND_RECOVERY_AND_CONTROLS_V1",
+ "scope_note": "methodology certification on the RW control parameter M; the SSZ channel is SYMBOLIC_TEST_ONLY (isospectral, FailClosed) until N3/N4 \u2014 this is NOT an SSZ-vs-GR physics claim",
+ "hidden": {
+  "seed_string": "ssz-g170-hidden-m:0f954b890d2d1b44201999bacb35fea43642ca7a",
+  "sha256_of_seed": "38dc0b20f2c647963d45e47104d46a8023089ef23ea0f4e5ef5c34203f9b9480",
+  "hidden_mass_hidden_until_after_fit": true
+ },
+ "detection_threshold_calibration": {
+  "method": "99.9th percentile of 200 noise-only peak-SNR realisations x 1.1",
+  "value": 5.473542437102368
+ },
+ "G170_blind_recovery": {
+  "m_true": 57.0,
+  "recovery_tol_rel": 0.05,
+  "trials": [
+   {
+    "seed": 20261006,
+    "m_hat": 55.429359685451296,
+    "rel_err": 0.02755509323769657,
+    "snr": 5.842541219709007,
+    "pass": true
+   },
+   {
+    "seed": 20261007,
+    "m_hat": 56.60301836430844,
+    "rel_err": 0.006964590099851931,
+    "snr": 6.35065850045545,
+    "pass": true
+   },
+   {
+    "seed": 20261008,
+    "m_hat": 57.29636651870765,
+    "rel_err": 0.005199412608906141,
+    "snr": 6.60015477832021,
+    "pass": true
+   }
+  ],
+  "pass": true
+ },
+ "G171_controls": {
+  "wrong_model": {
+   "wrong_factor": 2.0,
+   "m_hat_wrongmodel": 113.28117188971741,
+   "chi2_correct": 3.9759453072671194e-05,
+   "chi2_wrong": 0.974936998855007,
+   "wrong_model_loses": true
+  },
+  "noise_only": {
+   "peak_snr": 3.975429816908671,
+   "threshold": 5.473542437102368,
+   "no_detection": true
+  },
+  "pass": true
+ },
+ "overall_pass": true,
+ "wall_seconds": 11.9
+}

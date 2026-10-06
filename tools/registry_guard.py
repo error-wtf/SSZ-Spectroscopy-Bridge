@@ -59,6 +59,13 @@ def main() -> int:
     status = reg.get("status")
 
     if cmd == "check":
+        if "integrity_sha256" not in reg:
+            # Genesis: stamp the integrity hash so any later raw edit is
+            # tamper-detectable from this point on (content unchanged).
+            body = {k: v for k, v in reg.items()}
+            reg["integrity_sha256"] = sha256_text(
+                json.dumps(body, indent=1, sort_keys=True))
+            save(reg)
         print(json.dumps({"status": status,
                            "sealable": reg.get("sealable"),
                            "open_gates": [s["gate"] for s in

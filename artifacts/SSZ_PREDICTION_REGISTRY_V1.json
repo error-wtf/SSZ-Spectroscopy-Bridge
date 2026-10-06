@@ -1,6 +1,6 @@
 {
  "audit": "SSZ_PREDICTION_REGISTRY_V1",
- "created_utc": "2026-10-06T12:46:28Z",
+ "created_utc": "2026-10-06T13:21:52Z",
  "status": "PENDING",
  "semantics": "Pre-registration contract. Values are filled ONLY at catalog freeze, sealed ONLY after the upstream chain reports CLOSED, and never edited after data contact. Hash-chained seals; the git history is the tamper evidence.",
  "upstream_chain": [
@@ -113,5 +113,6 @@
   "worse_than_data_or_GR": "this member / this dynamics FALLS",
   "indistinguishable_from_GR": "current data cannot separate",
   "robust_extra_predictions": "declare new independent tests — NOT 'SSZ confirmed'"
- }
+ },
+ "integrity_sha256": "d1f2de698df07116058ed52ee06b1f07615bdffe6097d2d415faa1af21c99eb9"
 }

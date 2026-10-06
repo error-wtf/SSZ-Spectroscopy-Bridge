@@ -1,0 +1,505 @@
+{
+ "audit": "G184_NICER_REAL_DATA_TIMING_CHAIN_V2",
+ "source_catalog": "OBSERVED_MODE_CATALOG_INPUTS_NICER_MAXI_J1820 (v1)",
+ "band_hz": [
+  0.05,
+  64.0
+ ],
+ "protocol": "GTI-segment Leahy PSDs (segments >= 16 s, 1/64 s resolution), exposure-weighted average, threshold = Leahy 2 + 6 sigma (chi2_2), stability >= 6 ObsIDs; frequencies < 0.5 Hz excluded as per-segment ramp contamination",
+ "n_obs_processed": 20,
+ "n_obs_expected": 20,
+ "results": [
+  {
+   "obsid": "5200120403",
+   "exposure_s": 1824.0,
+   "n_segments": 114,
+   "n_events": 2457,
+   "noise_threshold_leahy": 3.124,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.438
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.312
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.125
+    }
+   ]
+  },
+  {
+   "obsid": "5200120402",
+   "exposure_s": 1584.0,
+   "n_segments": 99,
+   "n_events": 2415,
+   "noise_threshold_leahy": 3.206,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.125
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.125
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.688
+    }
+   ]
+  },
+  {
+   "obsid": "5200120401",
+   "exposure_s": 144.0,
+   "n_segments": 9,
+   "n_events": 2253,
+   "noise_threshold_leahy": 6.0,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.5
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.625
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.562
+    }
+   ]
+  },
+  {
+   "obsid": "4200120408",
+   "exposure_s": 1264.0,
+   "n_segments": 79,
+   "n_events": 1559,
+   "noise_threshold_leahy": 3.35,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 2.0
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.75
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.688
+    }
+   ]
+  },
+  {
+   "obsid": "4200120407",
+   "exposure_s": 1600.0,
+   "n_segments": 100,
+   "n_events": 2139,
+   "noise_threshold_leahy": 3.2,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.812
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.25
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.438
+    }
+   ]
+  },
+  {
+   "obsid": "4200120406",
+   "exposure_s": 704.0,
+   "n_segments": 44,
+   "n_events": 1452,
+   "noise_threshold_leahy": 3.809,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 4.5
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 4.25
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 3.25
+    }
+   ]
+  },
+  {
+   "obsid": "4200120405",
+   "exposure_s": 1088.0,
+   "n_segments": 68,
+   "n_events": 1090,
+   "noise_threshold_leahy": 3.455,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.938
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.0
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.188
+    }
+   ]
+  },
+  {
+   "obsid": "4200120404",
+   "exposure_s": 1808.0,
+   "n_segments": 113,
+   "n_events": 2342,
+   "noise_threshold_leahy": 3.129,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.125
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.562
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.875
+    }
+   ]
+  },
+  {
+   "obsid": "4200120403",
+   "exposure_s": 944.0,
+   "n_segments": 59,
+   "n_events": 1732,
+   "noise_threshold_leahy": 3.562,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.312
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.5
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.25
+    }
+   ]
+  },
+  {
+   "obsid": "4200120402",
+   "exposure_s": 880.0,
+   "n_segments": 55,
+   "n_events": 1231,
+   "noise_threshold_leahy": 3.618,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.75
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.75
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.938
+    }
+   ]
+  },
+  {
+   "obsid": "4200120401",
+   "exposure_s": 720.0,
+   "n_segments": 45,
+   "n_events": 786,
+   "noise_threshold_leahy": 3.789,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.938
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.625
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.188
+    }
+   ]
+  },
+  {
+   "obsid": "3200120439",
+   "exposure_s": 576.0,
+   "n_segments": 36,
+   "n_events": 673,
+   "noise_threshold_leahy": 4.0,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.125
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.062
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.25
+    }
+   ]
+  },
+  {
+   "obsid": "3200120438",
+   "exposure_s": 1088.0,
+   "n_segments": 68,
+   "n_events": 1876,
+   "noise_threshold_leahy": 3.455,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 2.938
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 3.438
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 2.875
+    }
+   ]
+  },
+  {
+   "obsid": "3200120437",
+   "exposure_s": 2704.0,
+   "n_segments": 169,
+   "n_events": 4991,
+   "noise_threshold_leahy": 2.923,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.75
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.938
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.688
+    }
+   ]
+  },
+  {
+   "obsid": "3200120436",
+   "exposure_s": 1408.0,
+   "n_segments": 88,
+   "n_events": 3128,
+   "noise_threshold_leahy": 3.279,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 3.0
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 2.062
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 3.062
+    }
+   ]
+  },
+  {
+   "obsid": "3200120435",
+   "exposure_s": 720.0,
+   "n_segments": 45,
+   "n_events": 705,
+   "noise_threshold_leahy": 3.789,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.125
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.125
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.562
+    }
+   ]
+  },
+  {
+   "obsid": "3200120434",
+   "exposure_s": 2048.0,
+   "n_segments": 128,
+   "n_events": 2064,
+   "noise_threshold_leahy": 3.061,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 2.188
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.25
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.375
+    }
+   ]
+  },
+  {
+   "obsid": "3200120433",
+   "exposure_s": 704.0,
+   "n_segments": 44,
+   "n_events": 461,
+   "noise_threshold_leahy": 3.809,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.562
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.438
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.562
+    }
+   ]
+  },
+  {
+   "obsid": "3200120432",
+   "exposure_s": 1408.0,
+   "n_segments": 88,
+   "n_events": 2098,
+   "noise_threshold_leahy": 3.279,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.562
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.812
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.25
+    }
+   ]
+  },
+  {
+   "obsid": "3200120431",
+   "exposure_s": 416.0,
+   "n_segments": 26,
+   "n_events": 345,
+   "noise_threshold_leahy": 4.353,
+   "n_peaks": 0,
+   "top_peaks": [],
+   "gti_segments": [
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.625
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 0.812
+    },
+    {
+     "dur_s": 16.0,
+     "rate_cps": 1.188
+    }
+   ]
+  }
+ ],
+ "stable_frequencies_hz": [],
+ "provenance_sha256": {
+  "5200120403": "c4335895b2767052651abf08b59992dc04a0685a30b829a0e464a022b1241d3e",
+  "5200120402": "c7720747b5c42e9ad05b3fe84bdce1bc8ae8c5bb67b19dbb65ac050fd8f34fa2",
+  "5200120401": "21f51df90dea8eece95095747c32660f538103b0f42ad6f1818f2dd5ccd77c17",
+  "4200120408": "b2642f1ea28c4258837b6ca97525d3d99285641729ba790512f2c56996c49db3",
+  "4200120407": "b7c51b22dc0f684c353dc5b8383da1b38d4870aa637fbef7895927de488bda6d",
+  "4200120406": "e8e699c2ffb7bdbd3714b626be3fd3b7391a09b1849a2914461b5a156d3ca60d",
+  "4200120405": "65be30ab59ed36445b9859c5c00bc34bcb7b66473fa67c645f774c46c4dd6be7",
+  "4200120404": "2f9915f7ba88e28888f516b11f54808bcea88cde198b860791c0abd4badd6e98",
+  "4200120403": "1a07e89f428a2c3fc70de19c67b5d145adead8a42d094c5bb9ad07e4c80aa02b",
+  "4200120402": "28e1c2e82eab00008642bbce0f5b2eb667b08935e78b4d75de185cb9b48f75b5",
+  "4200120401": "a15c8f8f7a4e2d801efb37248f795776cf365f6a0620797b2ec0c5ee354dc989",
+  "3200120439": "7370eae0c6d63c853296466fcd32c0a4760e56a286183312ab0c495f976f2193",
+  "3200120438": "416b28004f6b139149dc37b8f80c1e863c34a07b95b83f64e407260065c004fa",
+  "3200120437": "a1fe9249469f5f6790d8cb947e1390ca2f25083241ea8eb5862f0f1e537572ad",
+  "3200120436": "8611a2a49da5b753503fba667a06f32e165d404f636d3dd7b27ef50ddf750198",
+  "3200120435": "f50b0686d4b25cc6c2d1cdf4eb1efb88c3663d7c98a57b635358eaab595cbeeb",
+  "3200120434": "2002074a78cdfcf467bf6b21dcf38561c9bb62499df79c1a56a6e8685bd74b96",
+  "3200120433": "fc6571c7df5eb54c9350f105c91fd98e6089e5a0b6ecfc4efb2e8bc1a5ad4e1c",
+  "3200120432": "cf281aff7919be3eb38bbc318f7ed1c9fb9b5c1e569d2c88a5d61a2aa04691f5",
+  "3200120431": "5f6093d6e3c28a3b70ebb041985f3e709c16f09db1d5e3eb46db0a51c27c0afe"
+ },
+ "injection_control": {
+  "f_injected_hz": 4.0,
+  "f_found_hz": 4.0,
+  "leahy_at_max": 14.7,
+  "recovered": true
+ },
+ "scope_note": "infrastructure gate: real X-ray data through the timing chain; NOT an SSZ-vs-GR claim. QPO identifications are literature comparisons (0.5-7 Hz reported for MAXI J1820+070).",
+ "wall_seconds": 0.6,
+ "g184_pass": true
+}

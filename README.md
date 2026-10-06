@@ -30,6 +30,7 @@ implementation lands (anti-circularity). The mode certification contract
 | G182 | NOT PASS | single-damped-sinusoid matched filter on real GW150914 H1/L1: H1 SNR 6.1 < 8, detection criterion failed with the simplified template — honest infrastructure limit |
 | G183 | NOT PASS | mass stability across detectors failed (H1 110 vs L1 62 Msun — merger-power leakage into the simplified ringdown template); needs an IMR-based filter |
 | G161 | BLOCKED | requires the closure eikonal layer (Xi->D->g->Phi transport); the bridge SSZ channel is SYMBOLIC_TEST_ONLY (isospectral, FailClosed) until N3/N4 |
+| G184 | **PASS** | NICER real-data timing chain: 20/20 ObsIDs MAXI J1820+070 (HEASARC, SHA-256 provenance), GTI-segment Leahy PSDs, no significant QPO peaks at 6 sigma (honest null), injection control recovers a 4 Hz sinusoid at Leahy 14.7 — chain verified live (`artifacts/G184_NICER_REAL_DATA_TIMING_CHAIN_V2.json`) |
 | G190 | **BLOCKED** | rule applied honestly: G182/G183 not passed, G161 structurally blocked -> verdict BLOCKED (recorded in `artifacts/G190_EMPIRICAL_SPECTROSCOPY_VERDICT_V1.json`) |
 
 ## The breakthrough this session (measured, reproducible)

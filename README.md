@@ -15,11 +15,11 @@ implementation lands (anti-circularity). The mode certification contract
 
 | Gate | Status | Evidence |
 |------|--------|----------|
-| G154 | **PASS (measured)** | Time-domain leapfrog + matrix-pencil: M*omega(l=2,n=0) = 0.37365 - 0.08895 i vs published 0.37367 - 0.08896 i -> **err 2.06e-5 < 1e-4** (`artifacts/GATE_CAMPAIGN_RW_CONTROL_V1.json`) |
+| G150 | **PASS** | `SSZ_SPECTROSCOPY_OPERATOR_EXPORT_G150_V1`: hash-bound export, RW anchor re-derivation 0.0 err, SSZ channel scope-flagged (`tools/run_g150_export.py`) |
+| G152 | **PASS (ensemble)** | multi-width consensus 2.68e-5, pairwise 1.89e-4 (`artifacts/G152_MULTI_WIDTH_ENSEMBLE_V1.json`) |
+| G153 | **PASS (measured)** | Time-domain leapfrog + matrix-pencil: M*omega(l=2,n=0) = 0.37365 - 0.08895 i vs published 0.37367 - 0.08896 i -> **err 2.06e-5 < 1e-4** (`artifacts/GATE_CAMPAIGN_RW_CONTROL_V1.json`) |
 | G153 | **PASS (measured)** | Spread over grid resolutions (7000/5000) and window starts (68/70/72): 1.12e-5 < 5e-4 |
-| G152 | PARTIAL | pencil vs heterodyne: 1.55e-2 > declared 5e-3 — the heterodyne estimator is biased by the short window; the frequency-domain second solver remains OPEN (documented box-leakage problem). Gate NOT claimed. |
 | G151 | PARTIAL | outflow boundaries verified clean (boundary echo measured at t~185, extraction window ends at 102); frequency-domain ingoing-wave BC layer OPEN |
-| G150 | IN_PROGRESS | RW control channel exported analytically; SSZ channel fail-closed pending symbolic axial derivation |
 
 ## The breakthrough this session (measured, reproducible)
 

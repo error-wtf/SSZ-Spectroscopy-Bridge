@@ -1,0 +1,26 @@
+{
+ "audit": "G184_FROM_REFETCHED_DATA_V1",
+ "note": "G184 pipeline re-ran unmodified after raw-data fetch (HEASARC event_ufs + auxil for all 20 ObsIDs, SHA256-verified); the G184 chain consumes the frozen local event products whose provenance is bound to the archive download",
+ "historical": {
+  "n_obs": 20,
+  "stable_freqs": [],
+  "injection": {
+   "f_injected_hz": 4.0,
+   "f_found_hz": 4.0,
+   "leahy_at_max": 14.7,
+   "recovered": true
+  }
+ },
+ "rerun": {
+  "n_obs": 20,
+  "stable_freqs": [],
+  "injection": {
+   "f_injected_hz": 4.0,
+   "f_found_hz": 4.0,
+   "leahy_at_max": 14.7,
+   "recovered": true
+  }
+ },
+ "differences": [],
+ "reproduced": true
+}

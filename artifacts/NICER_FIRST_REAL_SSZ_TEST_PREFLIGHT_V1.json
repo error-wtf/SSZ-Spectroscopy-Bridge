@@ -1,0 +1,47 @@
+{
+ "audit": "NICER_FIRST_REAL_SSZ_TEST_PREFLIGHT_V1",
+ "protocol": "Lino pre-registered NICER first-real-SSZ-test",
+ "gates": {
+  "resonance_catalogue": {
+   "exists": false,
+   "sha256": null,
+   "note": "produced ONLY by COUPLED_RESONANCE_SOLVER_V1 (coupled Jost/ECS); box-mode catalogues (G160/RW_MODE_CATALOGUE) are NOT certified resonances"
+  },
+  "frequency_convention": {
+   "required": "Omega_inf = omega_t / sqrt(f_inf), T = sqrt(f_inf) t",
+   "forbidden": "c_inf ~= 0.501 coordinate-speed interpretation",
+   "source": "V4_ASYMPTOTIC_NORMALIZATION_AUDIT_V1 + V4_GLOBAL_EXTERIOR_V1",
+   "f_inf": 0.25117239,
+   "omega_inf_factor": 1.99532686,
+   "pass": true
+  },
+  "mass_prior": {
+   "defined": false,
+   "verdict_if_missing": "MASS_MAPPING_UNDEFINED (fail closed)",
+   "note": "requires ONE external optical/binary dynamical mass for MAXI J1820+070, frozen BEFORE the observed PSD catalogue is opened; never per-mode"
+  },
+  "stage0_g184_reproduction": {
+   "n_obs_processed": 20,
+   "stable_frequencies_hz": [],
+   "injection_control": {
+    "f_injected_hz": 4.0,
+    "f_found_hz": 4.0,
+    "leahy_at_max": 14.7,
+    "recovered": true
+   },
+   "reproduced_unmodified": true,
+   "wall_seconds": 0.7,
+   "provenance_sha256_original": "ab3b968429cde775459878a34f5cc87221c899fe28997f31243c5ea3e8ed55d5"
+  }
+ },
+ "verdict": "UPSTREAM_BLOCKED",
+ "blocker": "CERTIFIED_RESONANCE_CATALOG_V1 does not exist. The coupled (psi,V) Jost/ECS resonance solver (COUPLED_RESONANCE_SOLVER_V1) must run first. Per protocol: fail closed, do not invent a mass mapping, do not substitute box modes.",
+ "required_next": [
+  "COUPLED_RESONANCE_SOLVER_V1 on the hash-bound (psi,V) operator blocks",
+  "5 certification gates (Jost/ECS agreement, N_r, r_max, theta_ECS/r_match, box-mode continuation)",
+  "then CERTIFIED_RESONANCE_CATALOG_V1 + freeze",
+  "then freeze the external MAXI J1820+070 dynamical mass prior",
+  "then re-run this preflight"
+ ],
+ "wall_seconds": 0.7
+}

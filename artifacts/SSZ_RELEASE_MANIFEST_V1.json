@@ -1,0 +1,74 @@
+{
+ "audit": "SSZ_RELEASE_MANIFEST_V1",
+ "created_utc": "2026-10-06T12:52:14Z",
+ "status": "PENDING",
+ "note": "Sealable release requires: all repos clean, all CI success, registry SEALED, upstream chain closed. This manifest is regenerated at release time; PENDING proves what would ship.",
+ "repos": {
+  "closure": {
+   "path": "/home/error/physics/clones/SSZ_FULL_CLOSURE",
+   "branch": "spectroscopy-real-data-20261004",
+   "head": "40e7d34aef65449b1159d8586366571bff019517",
+   "head_short": "40e7d34aef65",
+   "clean": true,
+   "dirty_files": 0
+  },
+  "bridge": {
+   "path": "/home/error/SSZ-Transport-Bridge",
+   "branch": "main",
+   "head": "c8fce14463e1e1b6ac878eeca70421ac38aaaa32",
+   "head_short": "c8fce14463e1",
+   "clean": true,
+   "dirty_files": 0
+  },
+  "spectro": {
+   "path": "/home/error/SSZ-Spectroscopy-Bridge",
+   "branch": "main",
+   "head": "b439922132d6eabe22e487d16bf468ffb88da2c7",
+   "head_short": "b439922132d6",
+   "clean": false,
+   "dirty_files": 5
+  },
+  "sagnac": {
+   "path": "/home/error/Sagnac-Reference-Transport",
+   "branch": "main",
+   "head": "be74157021b9a2bce78e5c301de769767b8473f0",
+   "head_short": "be74157021b9",
+   "clean": true,
+   "dirty_files": 0
+  },
+  "portal": {
+   "path": "/home/error/physics/clones/ssz-research-portal",
+   "branch": "main",
+   "head": "28ebf941bc14ae616017df7d81254327d547e2fb",
+   "head_short": "28ebf941bc14",
+   "clean": true,
+   "dirty_files": 0
+  }
+ },
+ "pinned_data": {
+  "closure_member_csv": {
+   "ref": "closure:data/generated/phase2_q2/ELECTRIC_PRODUCTION_MEMBER_CURRENT.csv",
+   "exists": true,
+   "sha256": "8bd460ef022a9cdbcc3644abd8aecbfbb910f8e364ac1410378d2641291559cf"
+  },
+  "v4_branch_export": {
+   "ref": "closure:data/generated/spectral/V4_GHOSTFREE_BRANCH_EXPORT_V1.npz",
+   "exists": true,
+   "sha256": "ae0f6b7cf652077891c30b828fb3bc89842d74e6e97b0f7f36b540a03821d90b"
+  },
+  "registry": {
+   "ref": "spectro:artifacts/SSZ_PREDICTION_REGISTRY_V1.json",
+   "exists": true,
+   "sha256": "7f6a1158875e84a33db6f72edea428baecee6d9cc7385c06df09fe29c47c412b"
+  }
+ },
+ "environment": {
+  "python": "3.14.7",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "pandas": "3.0.6",
+  "sympy": "1.14.0"
+ },
+ "registry_status": "PENDING",
+ "reproduction_contract": "A third party needs: (1) these five repos at these exact HEADs, (2) the pinned data files (sha256 below), (3) a comparable environment. The bridge validator imports no closure code — an independent party may replace EITHER side and must reproduce the same certified mode catalogue from the same frozen operator."
+}

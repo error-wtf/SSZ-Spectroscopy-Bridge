@@ -1,0 +1,31 @@
+{
+ "audit": "SSZ_DISCRIMINATION_MAP_V1",
+ "created_utc": "2026-10-06T12:51:58Z",
+ "status": "BLOCKED_PENDING_CATALOGS",
+ "registry_status": "PENDING",
+ "scoring_rule": "theta* = argmax_theta |O_SSZ(theta) - O_GR(theta)| / sigma_O(theta); the map reports per-theta the best observable and the required precision for high-discrimination detection.",
+ "observable_space": [
+  "ratio_omega_221_220",
+  "ratio_omega_330_220",
+  "damping_hierarchy_tau1_tau0",
+  "mode_visibility_relative_amplitudes",
+  "photon_ring_lyapunov_and_echo_delay",
+  "combined_phase_redshift_relation"
+ ],
+ "instrument_priors_declared": [
+  "LVK ringdown SNR scaling",
+  "LISA MBH ringdown",
+  "EHT photon-ring resolution",
+  "pulsar timing / redshift"
+ ],
+ "required_inputs": {
+  "ssz_catalog": "artifacts/SSZ_PREDICTION_REGISTRY_V1.json must be SEALED with values (upstream chain closed)",
+  "gr_catalog": "reference GR/Kerr catalogue, same mass grid, same units, independently sourced (e.g. Berti_cardoso_will tables)",
+  "instrument_priors": "sigma_O(theta) per observable, frozen before the scan"
+ },
+ "blocking": {
+  "registry_status": "PENDING",
+  "needed": "SEALED registry (values present) + independent GR reference catalogue + frozen instrument priors"
+ },
+ "anti_flexibility_clause": "SSZ must win with its FIXED structure, not flexibility: the comparison runs against GR/Kerr AND generic parametrized deviation models simultaneously. Beating one GR fit alone does not establish SSZ."
+}

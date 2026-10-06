@@ -1,0 +1,16 @@
+{
+ "audit": "NICER_V5_READINESS_NOTE",
+ "created": "2026-10-06",
+ "g184_state": "PASS (20/20 ObsIDs, timing chain verified, injection control recovered)",
+ "structural_blocker": {
+  "finding": "BOTH certified geometries are horizonless over the certified window",
+  "evidence": [
+   "closure:data/generated/spectral/B6_ASYMPTOTIC_STRUCTURE_V1.json",
+   "closure:data/generated/spectral/JOST_QNM_CANDIDATES_V1.json",
+   "closure:data/generated/spectral/NORMAL_MODE_VERIFICATION_V1.json"
+  ],
+  "consequence": "No SSZ QNM catalogue can exist until a horizon-bearing member is certified. A NICER-vs-SSZ-QNM comparison is therefore not yet addressable: there are no theoretical frequencies to match against the observed X-ray timing features.",
+  "what_would_unblock": "A certified member whose metric function f(r) passes through zero within the certified window (true event horizon), plus the B6 physical-BC derivation on THAT member, plus the Jost/ECS dual-solver catalogue."
+ },
+ "honest_verdict": "NICER comparison remains an infrastructure success (G184) and a pending science goal \u2014 blocked by the same horizon finding that closes the QNM path."
+}

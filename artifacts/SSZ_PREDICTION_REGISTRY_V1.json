@@ -1,0 +1,117 @@
+{
+ "audit": "SSZ_PREDICTION_REGISTRY_V1",
+ "created_utc": "2026-10-06T12:46:28Z",
+ "status": "PENDING",
+ "semantics": "Pre-registration contract. Values are filled ONLY at catalog freeze, sealed ONLY after the upstream chain reports CLOSED, and never edited after data contact. Hash-chained seals; the git history is the tamper evidence.",
+ "upstream_chain": [
+  {
+   "gate": "S",
+   "artifact": "closure:data/generated/spectral/V4_S_TERM_PROVENANCE.json",
+   "state": "CLOSED",
+   "artifact_exists": true
+  },
+  {
+   "gate": "B8",
+   "artifact": "bridge:artifacts/B8_SECTOR_TRACKING_V4_V1.json",
+   "state": "OPEN",
+   "blocker": "sector attribution requires B6 physical BCs (mass guard fired: indefinite B on V4 branch)",
+   "artifact_exists": true
+  },
+  {
+   "gate": "F.4",
+   "artifact": "closure:data/generated/spectral/F4_FINITE_L_HEALTH_V4_S_PROJECTED_V1.json",
+   "state": "OPEN",
+   "blocker": "negative kinetic channel, attribution pending B8/B6",
+   "artifact_exists": true
+  },
+  {
+   "gate": "B6",
+   "artifact": null,
+   "state": "OPEN",
+   "blocker": "not started",
+   "artifact_exists": false
+  },
+  {
+   "gate": "Jost+ECS",
+   "artifact": null,
+   "state": "OPEN",
+   "blocker": "not started",
+   "artifact_exists": false
+  }
+ ],
+ "sealable": false,
+ "seal_inputs_declared": [
+  "closure_commit_sha",
+  "bridge_commit_sha",
+  "spectro_commit_sha",
+  "v4_branch_params",
+  "operator_export_sha256",
+  "catalog_sha256"
+ ],
+ "predicted_quantities": {
+  "mode_220": {
+   "meaning": "fundamental l=2,n=0 QNM, Re/Im in M-units",
+   "value": null,
+   "falsification_bound": null
+  },
+  "mode_221": {
+   "meaning": "first overtone l=2,n=1",
+   "value": null,
+   "falsification_bound": null
+  },
+  "mode_330": {
+   "meaning": "l=3,n=0",
+   "value": null,
+   "falsification_bound": null
+  },
+  "tau_220": {
+   "meaning": "damping time tau = -1/Im(omega) in M-units",
+   "value": null,
+   "falsification_bound": null
+  },
+  "Q_220": {
+   "meaning": "quality factor Q = Re(omega) / (-2 Im(omega))",
+   "value": null,
+   "falsification_bound": null
+  },
+  "ratio_221_220": {
+   "meaning": "overtone ratio Re(omega_221)/Re(omega_220)",
+   "value": null,
+   "falsification_bound": null
+  },
+  "ratio_330_220": {
+   "meaning": "Re(omega_330)/Re(omega_220)",
+   "value": null,
+   "falsification_bound": null
+  },
+  "residue_hierarchy": {
+   "meaning": "mode-dependent excitation coefficients for the declared source model (frozen before data)",
+   "value": null,
+   "falsification_bound": null
+  },
+  "mass_scaling_law": {
+   "meaning": "declared scaling of the spectrum with M (must be fixed before the blind test; no post-hoc tuning)",
+   "value": null,
+   "falsification_bound": null
+  },
+  "falsification_bounds": {
+   "meaning": "per-quantity deviation from SSZ prediction that counts as falsification, frozen with the seal",
+   "value": null,
+   "falsification_bound": null
+  }
+ },
+ "mass_scaling_convention": "omega is reported in units of 1/M_ref with M_ref declared at seal time; the blind test receives omega*M as the frozen target and may only convolve with DECLARED mass priors.",
+ "evaluation_protocol": {
+  "step1_blind_test": "frozen SSZ modes vs frozen observed catalog; scored jointly on f, tau, Q, relative amplitudes",
+  "step2_ssz_vs_gr": "same data, same noise model, same astrophysical priors; Bayes factor or information criterion + posterior predictive checks",
+  "step3_out_of_sample": "pipeline hash frozen after the development set; new events scored with UNCHANGED thresholds",
+  "step4_multi_event": "hierarchical p(theta_SSZ | d_1..d_N); dimensionless mode relations must hold across masses",
+  "step5_cross_observable": "photon ring, redshift, orbital frequencies, phase/JIF, timing — one geometry, many observables",
+  "step6_adversarial": "maximally attackable: un-fitted predictions (fixed mode ratios, extra damping branches, residue hierarchy, ring-structure relations)"
+ },
+ "outcome_semantics": {
+  "worse_than_data_or_GR": "this member / this dynamics FALLS",
+  "indistinguishable_from_GR": "current data cannot separate",
+  "robust_extra_predictions": "declare new independent tests — NOT 'SSZ confirmed'"
+ }
+}

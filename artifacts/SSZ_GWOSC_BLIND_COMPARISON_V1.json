@@ -2,7 +2,7 @@
   "artifact": "SSZ_GWOSC_BLIND_COMPARISON_V1",
   "created_utc": "2026-10-08T20:49:39+00:00",
   "observed_modes_surviving": 0,
-  "outcome": "THEORY_PREDICTS_NO_DISCRETE_MODE + OBSERVATION_HAS_NO_STABLE_MODE",
+  "outcome": "EXTRACTION_NULL_V1_INVALIDATED",
   "outcome_note": "both sides independently null in the comparable regime: SSZ predicts no certified discrete mode in its scanned window, and the model-agnostic H1/L1 coherent extraction finds no surviving damped mode above the off-source null. No mass mapping was performed (SCALE_MAPPING_UNRESOLVED for any future absolute-frequency comparison).",
   "theory": {
     "certificate": "COUPLED_RESONANCE_SOLVER_V2_2_CERTIFIED",
@@ -12,5 +12,6 @@
     "scale_mapping": "MASS_MAPPING_UNDEFINED (no frozen dynamical mass for GW150914 remnant in this project; LVK posteriors are NOT used by the law)"
   },
   "kerr_comparator_status": "NOT_EVALUATED (law: independent comparator only AFTER catalogue freeze; may be added as a separate labeled artifact later)",
-  "no_retuning": true
+  "no_retuning": true,
+  "outcome_correction": "V1 retracted (wrong time window + criteria deviations). '0 surviving modes' was a statement about THIS extraction, not about GW150914. Mass mapping unresolved. See OBSERVATIONAL_OUTCOME_CORRECTION_V1 and GWOSC_V2_ERROR_CORRECTION_PREREGISTRATION."
 }

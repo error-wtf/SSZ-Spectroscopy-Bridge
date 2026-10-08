@@ -1,0 +1,38 @@
+{
+  "artifact": "OBSERVATIONAL_OUTCOME_CORRECTION_V1",
+  "created_utc": "2026-10-08T21:46:36+00:00",
+  "bridge_head": "cca6372935db21a109d68620df3c751caf2e83bc",
+  "supersedes_fields_in": [
+    "SSZ_NICER_BLIND_COMPARISON_V1.json",
+    "SSZ_GWOSC_BLIND_COMPARISON_V1.json"
+  ],
+  "corrections": {
+    "nicer": {
+      "old_outcome": "OBSERVATION_HAS_NO_STABLE_MODE",
+      "correct_outcome": "OBSERVATIONAL_ANALYSIS_BLOCKED",
+      "reason": "the preregistered timing analysis could not be executed at the declared sensitivity (public event_cl = MPU7-only, 0.01-1.8 cps). No physical null result was produced \u2014 a blocked analysis is not a null."
+    },
+    "gwosc": {
+      "old_outcome": "THEORY_PREDICTS_NO_DISCRETE_MODE + OBSERVATION_HAS_NO_STABLE_MODE",
+      "correct_outcome": "EXTRACTION_NULL_V1_INVALIDATED (V1 retracted: wrong time window + criteria deviations, see GWOSC_V2_ERROR_CORRECTION_PREREGISTRATION); V2 pending",
+      "reason": "'no mode survived the matrix-pencil pipeline' is a statement about THIS extraction, not about GW150914's ringdown. Additionally the SSZ mass mapping is unresolved (SCALE_MAPPING_UNRESOLVED), so even a future null could not be read as confirmation of SSZ."
+    },
+    "double_null_narrative": "WITHDRAWN"
+  },
+  "theory_side_note": {
+    "HIGH_L_ONSET_DERIVATION_V1": "the P(r)=K^-1(M+S'/2) eigenvalue scan is a structural HINT (no classical pocket in the window), not a QNM proof. In the coupled system G, derivative couplings, local eigenvectors and the complex outgoing BCs matter. Before declaring any new scan region, evaluate the full frequency-dependent matrix pencil P(r,w,k;L) = w^2 K - k^2 G + i k (G'-S) - (M+S'/2).",
+    "consequence": "do NOT scan at w~48 yet; pencil analysis first"
+  },
+  "role_separation": {
+    "SSZ_FULL_CLOSURE": "physics: what follows from bounded segmentation density? old pi-ansatz = historical hypothesis",
+    "Sagnac-Reference-Transport": "numerics: pi-digit truncation vs analytic runtime (SAGNAC_PI_PRECISION_CONTROL_V1) \u2014 SSZ-independent",
+    "SSZ-Transport-Bridge": "independent recomputation of frozen geometry; adopts new segmentation/dispersion predictions ONLY after Closure derives them, with own convergence/units/negative controls"
+  },
+  "precision_law_distinction": {
+    "physical_resolution": "d > log10(R/l_min) (SSZ_PI_DIGITS_RESOLUTION_LAW_V1)",
+    "numerical_precision": "Sagnac control: float64 (16 digits) already suffices for 1-km-loop runtime at 1e-16; digits are a free computational parameter",
+    "rule": "never mix the two d's"
+  },
+  "no_observational_input_to_theory": true,
+  "observational_seal": "maintained"
+}

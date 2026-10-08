@@ -1,0 +1,46 @@
+{
+  "artifact": "GWOSC_V2_ERROR_CORRECTION_PREREGISTRATION",
+  "created_utc": "2026-10-08T21:10:08+00:00",
+  "bridge_head": "f1f8a8346af56e2635cc9c2d04f0912828ded619",
+  "trigger": "owner code review 2026-10-08 (paste, 7 findings) \u2014 all CONFIRMED",
+  "confirmed_v1_findings": {
+    "F1_time_base": "GPS_EVENT=1126259462.0; official merger time 1126259462.4 -> V1 window sat 398..440 ms BEFORE the event. FATAL: V1 analyzed the pre-merger region.",
+    "F2_amplitude": "|z| is the per-step damping factor exp(-dt/tau), not a mode amplitude; the amp_above_null_99 gate compared damping factors",
+    "F3_ladder": "start/end ladders computed but not enforced in survives",
+    "F4_bootstrap": "capped at 50, preregistered 200",
+    "F5_psd_source": "whitening PSD from the full data segment, not off-source only",
+    "F6_phase": "H1/L1 phase-coherence gate absent",
+    "F7_nicer_nyquist": "NICER V1 preregistration: dt=1/64 s -> Nyquist 32 Hz but declared band to 64 Hz \u2014 protocol inconsistent (recorded; NICER remains blocked anyway)"
+  },
+  "v1_evidence_in_committed_source": {
+    "GPS_EVENT_literal": true,
+    "abs_z_amplitude": true,
+    "bootstrap_cap": true,
+    "ladder_not_enforced": true
+  },
+  "retraction": {
+    "artifact_retracted": "GWOSC_GW150914_OBSERVED_MODES_V1.json",
+    "status": "RETRACTED_WRONG_TIME_WINDOW_AND_CRITERIA",
+    "archived": true,
+    "not_deleted": true,
+    "double_null_claim": "WITHDRAWN \u2014 theory ladder nulls remain valid; the observational side has no valid result yet",
+    "nicer_status_note": "NICER remains BLOCKED (data insufficient) \u2014 that finding is independent of F1-F7 and stands"
+  },
+  "v2_fixes": {
+    "F1": "GPS_EVENT = 1126259462.4, cross-checked against file metadata",
+    "F2": "amplitude = least-squares excitation coefficient per pencil pole",
+    "F3": "ladder stability enforced in survives (>=2 start, >=2 end)",
+    "F4": "full 200 bootstrap resamples",
+    "F5": "whitening PSD from off-source segments only",
+    "F6": "time-delay-corrected H1/L1 phase-coherence gate implemented",
+    "F7_gate": "SYNTHETIC INJECTION GATE BEFORE REAL RUN: frozen (f,tau) grid embedded in real off-source noise; declared SNR ladder; declared detection-efficiency floor and false-alarm ceiling; the real-data run is BLOCKED until the gate passes"
+  },
+  "v2_status": "NOT_BLIND (same event data already inspected) \u2014 future independent confirmation requires holdout data",
+  "theory_side": "UNCHANGED and still frozen (L-ladder nulls valid; certificate untouched)",
+  "bound_hashes": {
+    "v1_modes_artifact": "02bd350fd39b84c046be333e0eacabdbc919138e73589e766c5c4ebfcadfcbf6",
+    "v1_freeze": "82a78713fd86efb6cfb95de398579429db686f88834d8d417a1c0d37d351a530",
+    "v1_preregistration": "487b90a790bc9db480c1f6958f2007da5cbbcc5e4661a457a2c3ec546bbc6df0",
+    "v1_runner_source": "b83ab7fadae1fb8024e70758100f032bf3fcb02bb4ebfe0a198f25ef2476c7a1"
+  }
+}

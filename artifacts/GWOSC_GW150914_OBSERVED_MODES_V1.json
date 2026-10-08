@@ -126,5 +126,7 @@
   "n_surviving": 0
  },
  "wall_seconds": 95.8,
- "note": "model-agnostic matrix-pencil extraction; no Kerr/SSZ labels; empty survivor set is a valid outcome"
+ "note": "model-agnostic matrix-pencil extraction; no Kerr/SSZ labels; empty survivor set is a valid outcome",
+ "status": "RETRACTED_WRONG_TIME_WINDOW_AND_CRITERIA",
+ "retraction_note": "GPS_EVENT was 1126259462.0 (should be .4); the analysis window sat 398-440 ms BEFORE the merger. Acceptance criteria deviated from preregistration (F2-F6). Superseded by GWOSC_V2_ERROR_CORRECTION_PREREGISTRATION. Kept for audit trail only \u2014 NOT a physics result."
 }

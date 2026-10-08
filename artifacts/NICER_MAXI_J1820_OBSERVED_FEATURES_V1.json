@@ -1,0 +1,73 @@
+{
+ "audit": "NICER_MAXI_J1820_OBSERVED_FEATURES_V1",
+ "created_utc": "2026-10-08T20:39:55Z",
+ "protocol": "OBSERVATIONAL_UNBLINDING_PREREGISTRATION_V1",
+ "blind_split": {
+  "discovery": [
+   "3200120431",
+   "3200120433",
+   "3200120434",
+   "3200120435",
+   "3200120436",
+   "3200120439",
+   "4200120404",
+   "4200120405",
+   "4200120406",
+   "4200120408",
+   "5200120401",
+   "5200120402"
+  ],
+  "validation": [
+   "3200120432",
+   "3200120437",
+   "3200120438",
+   "4200120401",
+   "4200120402",
+   "4200120403",
+   "4200120407",
+   "5200120403"
+  ]
+ },
+ "per_obs_summary": {
+  "3200120431": {
+   "status": "no_data"
+  },
+  "3200120433": {
+   "status": "no_data"
+  },
+  "3200120434": {
+   "status": "no_data"
+  },
+  "3200120435": {
+   "status": "no_data"
+  },
+  "3200120436": {
+   "status": "no_data"
+  },
+  "3200120439": {
+   "status": "no_data"
+  },
+  "4200120404": {
+   "status": "no_data"
+  },
+  "4200120405": {
+   "status": "no_data"
+  },
+  "4200120406": {
+   "status": "no_data"
+  },
+  "4200120408": {
+   "status": "no_data"
+  },
+  "5200120401": {
+   "status": "no_data"
+  },
+  "5200120402": {
+   "status": "no_data"
+  }
+ },
+ "frozen_candidates": [],
+ "validation": [],
+ "n_frozen_candidates": 0,
+ "note": "model-independent cataloguing; Lorentzian/Q characterization deferred to description-only step; empty result is a valid outcome"
+}

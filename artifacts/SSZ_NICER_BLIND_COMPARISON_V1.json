@@ -1,0 +1,9 @@
+{
+  "artifact": "SSZ_NICER_BLIND_COMPARISON_V1",
+  "created_utc": "2026-10-08T20:49:39+00:00",
+  "comparison_input": "NICER_TIMING_CATALOG_BLOCKED_V1.json (no features cataloguable)",
+  "outcome": "OBSERVATION_HAS_NO_STABLE_MODE",
+  "outcome_note": "the public NICER products do not support the preregistered timing analysis (MPU7-only, 0.01-1.8 cps); the discovery is recorded fail-closed rather than downgraded silently. A low-frequency V2 preregistration remains a legal future hypothesis.",
+  "ssz_comparison_state": "none possible \u2014 no observed features to compare",
+  "no_retuning": true
+}

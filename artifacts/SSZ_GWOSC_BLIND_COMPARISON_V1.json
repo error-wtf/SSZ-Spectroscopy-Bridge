@@ -1,0 +1,16 @@
+{
+  "artifact": "SSZ_GWOSC_BLIND_COMPARISON_V1",
+  "created_utc": "2026-10-08T20:49:39+00:00",
+  "observed_modes_surviving": 0,
+  "outcome": "THEORY_PREDICTS_NO_DISCRETE_MODE + OBSERVATION_HAS_NO_STABLE_MODE",
+  "outcome_note": "both sides independently null in the comparable regime: SSZ predicts no certified discrete mode in its scanned window, and the model-agnostic H1/L1 coherent extraction finds no surviving damped mode above the off-source null. No mass mapping was performed (SCALE_MAPPING_UNRESOLVED for any future absolute-frequency comparison).",
+  "theory": {
+    "certificate": "COUPLED_RESONANCE_SOLVER_V2_2_CERTIFIED",
+    "certified_poles_in_scan_domain": 0,
+    "domain": "Re omega_t [0.05, 3.0] x Im omega_t [-2.0, -0.05]",
+    "frequency_convention": "omega_t (raw solver), Omega_inf = omega_t/sqrt(f_inf), f_inf=0.24588743",
+    "scale_mapping": "MASS_MAPPING_UNDEFINED (no frozen dynamical mass for GW150914 remnant in this project; LVK posteriors are NOT used by the law)"
+  },
+  "kerr_comparator_status": "NOT_EVALUATED (law: independent comparator only AFTER catalogue freeze; may be added as a separate labeled artifact later)",
+  "no_retuning": true
+}

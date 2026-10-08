@@ -1,0 +1,127 @@
+{
+  "artifact": "OBSERVATIONAL_UNBLINDING_PREREGISTRATION_V1",
+  "created_utc": "2026-10-08T20:32:00+00:00",
+  "bridge_head": "0553600071b735e540ea40c6533b9096ebb299b8",
+  "theory_state": {
+    "repo": "SSZ_FULL_CLOSURE",
+    "head": "6fda7290d2340075412e56a60be012a0648d46c5",
+    "status": "FROZEN \u2014 no theory changes during the observational campaign",
+    "solver_certificate": "COUPLED_RESONANCE_SOLVER_V2_2_CERTIFIED",
+    "ladder": "L=6,12,20,42 all strict null over Re[0.05,3.0] x Im[-2.0,-0.05]",
+    "law": "ANTI_CIRCULAR_FORWARD_PREDICTION_LAW (08b9f3e)"
+  },
+  "datasets": {
+    "nicer": {
+      "target": "MAXI J1820+070",
+      "n_obsids": 20,
+      "local_index": "artifacts/NICER_MAXI_J1820_FILE_INDEX_V1.csv",
+      "raw_root_local": "/home/error/physics/nicer_data",
+      "cleaning": "cleaned event files, PI 35..900 (unchanged from G184)"
+    },
+    "gwosc": {
+      "event": "GW150914-v4",
+      "detectors": [
+        "H1",
+        "L1"
+      ],
+      "local_index": "artifacts/GWOSC_GW150914_FILE_INDEX_V1.csv",
+      "raw_root_local": "data/raw/gwosc/GW150914-v4",
+      "provenance": "PUBLIC_CALIBRATED_STRAIN_PRODUCT"
+    }
+  },
+  "nicer_protocol": {
+    "lightcurve": "per GTI segment >= 16 s, dt = 1/64 s",
+    "psd": "Leahy, per-segment, exposure-weighted average",
+    "band_hz": [
+      0.05,
+      64.0
+    ],
+    "detection": "model-independent: all local maxima of the averaged PSD with power above the chi2_2 noise floor are pre-candidates; threshold = Leahy 2 + 6 sigma (sigma = 2/sqrt(n_avg)) recorded but candidates BELOW threshold are ALSO catalogued down to 4 sigma, labeled below_6sigma",
+    "characterization_after_detection": "Lorentzian fit allowed ONLY as data description (frequency, width, Q); NOT an SSZ fit",
+    "per_candidate_fields": [
+      "obsid",
+      "frequency_hz",
+      "width_hz",
+      "Q",
+      "power",
+      "local_significance_sigma",
+      "global_significance_note",
+      "n_segments_seen",
+      "fraction_of_exposure_seen",
+      "neighboring_noise_estimate"
+    ],
+    "blind_split": {
+      "rule": "odd/even SHA256(ObsID) split, deterministic, computed before candidate interpretation",
+      "discovery": "candidates defined on discovery ObsIDs only",
+      "validation": "frozen candidate frequencies/bands tested on validation ObsIDs; frequencies never moved after validation"
+    }
+  },
+  "gwosc_protocol": {
+    "no_templates": "no Kerr QNM frequencies, no SSZ frequencies, no remnant-mass window",
+    "whitening": "PSD whitening from off-source data (same method for H1 and L1)",
+    "analysis_window": "post-merger interval [gps_event + 0.002 s, gps_event + 0.06 s] frozen BEFORE extraction (covers the declared ringdown window without any theory input)",
+    "extraction": "matrix-pencil (Prony) damped-mode extraction on whitened complex strain, H1 and L1 INDEPENDENTLY",
+    "order_ladder": "pencil orders 8..40 step 4",
+    "stability": {
+      "start_time_ladder_s": [
+        -0.002,
+        0.0,
+        0.002,
+        0.004
+      ],
+      "end_time_ladder_s": [
+        0.03,
+        0.04,
+        0.06,
+        0.08
+      ],
+      "bootstrap_resamples": 200,
+      "requirement": "mode must persist across >= 2 start and >= 2 end settings with frequency drift < 5%"
+    },
+    "coherence_gate": {
+      "frequency_agreement": "|f_H1 - f_L1| < 10 Hz (frozen before extraction)",
+      "tau_agreement": "|tau_H1 - tau_L1| / tau < 0.5",
+      "phase_consistency": "time-delay corrected phase consistent within 2 pi / (f * tau) budget",
+      "false_alarm": "candidate exceeds the 99th percentile of the off-source null distribution built from the frozen off-source segments"
+    },
+    "output_fields": [
+      "detector",
+      "f_hz",
+      "tau_s",
+      "Q",
+      "snr",
+      "start_s",
+      "end_s",
+      "pencil_order",
+      "bootstrap_median_f",
+      "bootstrap_median_tau"
+    ]
+  },
+  "mass_rule": "NO mass chosen or inferred in this campaign. NICER frequencies stay in Hz. GWOSC modes stay in f/tau/Q detector convention. Any later mass mapping uses an externally frozen dynamical mass prior (NICER) or inspiral-only frozen scale (GWOSC), never the post-merger segment being validated.",
+  "outputs": [
+    "NICER_MAXI_J1820_OBSERVED_FEATURES_V1.json",
+    "NICER_MAXI_J1820_OBSERVED_FEATURES_V1.csv",
+    "NICER_MAXI_J1820_BLIND_VALIDATION_V1.json",
+    "GWOSC_GW150914_OBSERVED_MODES_V1.json",
+    "GWOSC_GW150914_OBSERVED_MODES_V1.csv",
+    "OBSERVATIONAL_CATALOG_FREEZE_V1.json",
+    "SSZ_NICER_BLIND_COMPARISON_V1.json",
+    "SSZ_GWOSC_BLIND_COMPARISON_V1.json",
+    "ANTI_CIRCULARITY_AUDIT_V1.json"
+  ],
+  "allowed_comparison_outcomes": [
+    "MATCH",
+    "NO_MATCH",
+    "THEORY_PREDICTS_NO_DISCRETE_MODE",
+    "OBSERVATION_HAS_NO_STABLE_MODE",
+    "OUTSIDE_THEORY_SCAN_DOMAIN",
+    "SCALE_MAPPING_UNRESOLVED"
+  ],
+  "no_retuning_rule": "No theory rerun, retuning or new scan motivated by observed features. Any such idea becomes a NEW preregistered hypothesis with holdout data.",
+  "bound_inputs_sha256": {
+    "G184_FROM_REFETCHED_DATA_V1": "210ebb3111dc075ce457548b9ef7e04e0d82a41270eeeacfa2daa6cb2d9d3bb9",
+    "GWOSC_FILE_INDEX": "3f77b3a356eca9e9e84c6697e82932d3fe8d2bbe1809248e5b1af8f942ad5aab",
+    "NICER_FILE_INDEX": "fd2e6b644495dc449b1373f46edc1fda66217c92c1d05e32b70e6d34113fc1cd",
+    "G181_G182_G183": "c1f2e7c9a92518cf9a34f2d2b03cd866366f4161e96ee269c389a168d780b401"
+  }
+}

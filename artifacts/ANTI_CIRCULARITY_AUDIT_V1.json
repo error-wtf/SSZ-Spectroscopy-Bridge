@@ -1,0 +1,23 @@
+{
+  "artifact": "ANTI_CIRCULARITY_AUDIT_V1",
+  "created_utc": "2026-10-08T20:49:39+00:00",
+  "theory_freeze_commit": "6fda7290d2340075412e56a60be012a0648d46c5",
+  "theory_freeze_timestamp": "2026-10-08T20:40:00+00:00",
+  "observational_unblind_timestamp": "2026-10-08T20:49:10+00:00",
+  "ordering_holds": true,
+  "data_access_boundary": "NICER/GWOSC fetched and hashed beforehand; spectral contents (features/modes) extracted only after the theory state was frozen; no theory parameter, branch, L, threshold, box or mass mapping touched by any observed quantity during this campaign",
+  "preregistration_hash": "487b90a790bc9db480c1f6958f2007da5cbbcc5e4661a457a2c3ec546bbc6df0",
+  "prediction_hash": {
+    "solver_certificate_sha256": "39eba86a4636fcfb83e83b8a9d821f825d08ad9512e37f0d590bc77c5a869691",
+    "l_ladder_summary_sha256": "86f38d2af3e28d1efcdbfb643ab35b74e257339bc504c4f0a1e6a7f30bff1572",
+    "high_l_onset_sha256": "ea4e22807338e4997cd91b4edfcdbfd7f392a8291754701f4885b40dbf0077a6"
+  },
+  "catalogue_freeze_hash": "82a78713fd86efb6cfb95de398579429db686f88834d8d417a1c0d37d351a530",
+  "evidence_log": [
+    "SSZ_L_LADDER_V1_SUMMARY.json \u2014 L=6/12/20/42 nulls, committed before unblinding",
+    "HIGH_L_ONSET_DERIVATION_V1.json \u2014 structural explanation of the nulls",
+    "OBSERVATIONAL_UNBLINDING_PREREGISTRATION_V1.json \u2014 committed before any feature extraction; contains NO theory frequency",
+    "GWOSC_GW150914_OBSERVED_MODES_V1.json \u2014 extraction ran strictly after the theory freeze; contains no theory frequency"
+  ],
+  "gate": "PASS"
+}

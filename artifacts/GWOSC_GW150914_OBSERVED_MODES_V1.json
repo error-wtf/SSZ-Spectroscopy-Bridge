@@ -1,0 +1,130 @@
+{
+ "audit": "GWOSC_GW150914_OBSERVED_MODES_V1",
+ "created_utc": "2026-10-08T20:46:55Z",
+ "protocol": "OBSERVATIONAL_UNBLINDING_PREREGISTRATION_V1",
+ "event_gps": 1126259462.0,
+ "window_s": [
+  0.002,
+  0.06
+ ],
+ "no_templates": true,
+ "per_detector": {
+  "H1": {
+   "nominal_clusters": [
+    {
+     "f_hz": 44.63,
+     "tau_s": 0.59539,
+     "Q": 166.95,
+     "n_pencil_orders": 1,
+     "max_amp": 0.9996
+    },
+    {
+     "f_hz": 282.93,
+     "tau_s": 0.25417,
+     "Q": 451.82,
+     "n_pencil_orders": 9,
+     "max_amp": 0.9996
+    },
+    {
+     "f_hz": 294.91,
+     "tau_s": 0.24867,
+     "Q": 460.77,
+     "n_pencil_orders": 1,
+     "max_amp": 0.999
+    },
+    {
+     "f_hz": 128.37,
+     "tau_s": 0.03052,
+     "Q": 24.62,
+     "n_pencil_orders": 9,
+     "max_amp": 0.9985
+    },
+    {
+     "f_hz": 226.95,
+     "tau_s": 0.05349,
+     "Q": 76.28,
+     "n_pencil_orders": 7,
+     "max_amp": 0.9965
+    }
+   ],
+   "null_amp_99": 0.9996488604051075,
+   "n_null_samples": 726,
+   "ladder_runs": 16
+  },
+  "L1": {
+   "nominal_clusters": [
+    {
+     "f_hz": 215.17,
+     "tau_s": 0.1184,
+     "Q": 160.07,
+     "n_pencil_orders": 7,
+     "max_amp": 0.9993
+    },
+    {
+     "f_hz": 75.47,
+     "tau_s": 0.10402,
+     "Q": 49.32,
+     "n_pencil_orders": 8,
+     "max_amp": 0.9992
+    },
+    {
+     "f_hz": 49.11,
+     "tau_s": 0.08944,
+     "Q": 27.6,
+     "n_pencil_orders": 6,
+     "max_amp": 0.9991
+    },
+    {
+     "f_hz": 295.63,
+     "tau_s": 0.06485,
+     "Q": 120.46,
+     "n_pencil_orders": 9,
+     "max_amp": 0.9985
+    },
+    {
+     "f_hz": 171.53,
+     "tau_s": 0.16188,
+     "Q": 174.47,
+     "n_pencil_orders": 1,
+     "max_amp": 0.9985
+    }
+   ],
+   "null_amp_99": 0.9996955441776875,
+   "n_null_samples": 744,
+   "ladder_runs": 16
+  }
+ },
+ "coherence_gate": {
+  "f_tol_hz": 10.0,
+  "tau_tol_rel": 0.5,
+  "pairs": [
+   {
+    "f_hz": 47.0,
+    "f_H1": 45,
+    "f_L1": 49,
+    "tau_H1_s": 0.59539,
+    "tau_L1_s": 0.08944,
+    "tau_rel_diff": 1.478,
+    "tau_within_tolerance": false,
+    "amp_above_null_99": false,
+    "pencil_order_persistence": false,
+    "survives": false
+   },
+   {
+    "f_hz": 295.5,
+    "f_H1": 295,
+    "f_L1": 296,
+    "tau_H1_s": 0.24867,
+    "tau_L1_s": 0.06485,
+    "tau_rel_diff": 1.173,
+    "tau_within_tolerance": false,
+    "amp_above_null_99": false,
+    "pencil_order_persistence": false,
+    "survives": false
+   }
+  ],
+  "n_surviving": 0
+ },
+ "wall_seconds": 95.8,
+ "note": "model-agnostic matrix-pencil extraction; no Kerr/SSZ labels; empty survivor set is a valid outcome"
+}

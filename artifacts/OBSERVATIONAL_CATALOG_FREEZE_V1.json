@@ -1,0 +1,40 @@
+{
+  "artifact": "OBSERVATIONAL_CATALOG_FREEZE_V1",
+  "created_utc": "2026-10-08T20:49:10+00:00",
+  "bridge_head": "0553600071b735e540ea40c6533b9096ebb299b8",
+  "theory_freeze_commit": "6fda7290d2340075412e56a60be012a0648d46c5",
+  "theory_freeze_timestamp": "2026-10-08T20:40:00+00:00",
+  "theory_state_summary": {
+    "certificate": "COUPLED_RESONANCE_SOLVER_V2_2_CERTIFIED",
+    "l_ladder": "6,12,20,42 all strict null",
+    "domain": "Re omega_t [0.05,3.0] x Im [-2.0,-0.05]",
+    "high_L_onset": "no classical pocket in window at any L (structurally explained)"
+  },
+  "catalogues": {
+    "nicer_features": {
+      "status": "BLOCKED_PUBLIC_DATA_INSUFFICIENT",
+      "artifact": "NICER_TIMING_CATALOG_BLOCKED_V1.json",
+      "sha256": "8aeb8aa0b49512dbd9606cbd534e7017b38922fe394993c4838f6095434e7e68",
+      "summary": "public HEASARC event_cl products are MPU7-subarray only (0.01-1.8 cps) \u2014 preregistered timing sensitivity unreachable; fail-closed, no silent protocol downgrade"
+    },
+    "nicer_validation": {
+      "status": "NOT_RUN (discovery blocked)",
+      "artifact": null
+    },
+    "gwosc_modes": {
+      "status": "COMPLETE \u2014 ZERO SURVIVING MODES",
+      "artifact": "GWOSC_GW150914_OBSERVED_MODES_V1.json",
+      "sha256": "02bd350fd39b84c046be333e0eacabdbc919138e73589e766c5c4ebfcadfcbf6",
+      "csv_sha256": "281e8545be3070bdded931216372c2c9599edb5101d7729785db993956a0d33e",
+      "summary": "model-agnostic matrix-pencil extraction (orders 8-40, start/end ladders, 100 null resamples) on H1 and L1 independently; 2 frequency-coincident pairs found, BOTH fail tau-agreement, amplitude-above-null-99 and pencil-order persistence -> 0 surviving coherent modes"
+    }
+  },
+  "code_sha256": {
+    "gwosc_runner": "b83ab7fadae1fb8024e70758100f032bf3fcb02bb4ebfe0a198f25ef2476c7a1",
+    "nicer_runner": "a904632d38657b818575ee0358aa8ff02c1fe3726fd57eeb2c2769e78cf9e701",
+    "nicer_refetch": "531f0c9f796f5663be3e3c37dd960b836a62ad36c69408e8fc5616b95efa36a0"
+  },
+  "thresholds_sha256": "487b90a790bc9db480c1f6958f2007da5cbbcc5e4661a457a2c3ec546bbc6df0",
+  "observational_unblind_timestamp": "2026-10-08T20:49:10+00:00",
+  "rule": "NO SSZ comparison before this freeze; now frozen \u2014 comparison may proceed."
+}

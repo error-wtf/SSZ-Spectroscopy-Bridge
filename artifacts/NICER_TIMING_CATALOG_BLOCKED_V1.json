@@ -1,0 +1,26 @@
+{
+  "artifact": "NICER_TIMING_CATALOG_BLOCKED_V1",
+  "created_utc": "2026-10-08T20:42:02+00:00",
+  "bridge_head": "0553600071b735e540ea40c6533b9096ebb299b8",
+  "status": "BLOCKED_PUBLIC_DATA_INSUFFICIENT",
+  "finding": {
+    "checked": "all 20 ObsIDs, HEASARC event_cl listings (years 2020_04, 2021_03, 2021_04, 2022_03)",
+    "public_products": "ONLY ni<obsid>_0mpu7_cl.evt.gz (MPU7 subarray) per ObsID",
+    "full_detector_cleaned": "not public for these observations",
+    "rates_cps": {
+      "min": 0.012,
+      "max": 1.848
+    },
+    "preregistered_protocol_requirement": ">= 1024 events per 16 s GTI segment (dt=1/64 s Leahy PSD, 0.05-64 Hz band)",
+    "max_events_per_16s_window_found": 43
+  },
+  "decision": "fail closed \u2014 no silent protocol downgrade",
+  "future_legal_path": "A new preregistration (NICER_TIMING_LOWFREQ_V2) may declare a reduced-sensitivity protocol (e.g. Nyquist 1 Hz, long segments) for LF-QPO band 0.05-1 Hz BEFORE any analysis; it must state the sensitivity loss explicitly and would be a NEW hypothesis version per the law.",
+  "refetched_data": {
+    "files": "20/20 ni*_0mpu7_cl.evt.gz, gzip+FITS verified",
+    "kept_at": "data/raw/nicer/MAXI_J1820+070/<obsid>/xti/event_cl/"
+  },
+  "gwosc_campaign": "PROCEEDS \u2014 data verified valid (H1/L1 HDF5, full public strain)",
+  "preregistration_sha256": "487b90a790bc9db480c1f6958f2007da5cbbcc5e4661a457a2c3ec546bbc6df0",
+  "no_observational_influence_on_theory": true
+}

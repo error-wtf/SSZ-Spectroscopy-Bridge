@@ -1,0 +1,37 @@
+{
+  "artifact": "GWOSC_V2_F7_GATE_SPECIFICATION_FROZEN",
+  "created_utc": "2026-10-08T22:49:14+00:00",
+  "bridge_head_at_run_start": "cca6372 (runner committed in f0a0945 as untracked->first committed version)",
+  "note": "Spec frozen WHILE the gate run is in progress; the constants below were extracted verbatim from the running script (unchanged since run start). Post-run verification: gate artifact must match these numbers exactly.",
+  "frozen_constants": {
+    "GPS_EVENT": "1126259462.4",
+    "WIN_START_s": "0.002",
+    "WIN_END_s": "0.06",
+    "START_LADDER_s": "[-0.002, 0.0, 0.002, 0.004]",
+    "END_LADDER_s": "[0.03, 0.04, 0.06, 0.08]",
+    "ORDERS": "list(range(8, 44, 4))",
+    "F_TOL_HZ": "10.0",
+    "TAU_TOL_REL": "0.5",
+    "N_BOOT": "200  # F4: full count",
+    "OFFSOURCE_SEGMENTS_s": "[(-64.0, -32.0), (-32.0, -16.0), (16.0, 32.0), (32.0, 64.0)]",
+    "injection_grid_f_hz": "[80, 120, 180, 250]",
+    "injection_grid_tau_ms": "[2, 4, 8, 15]",
+    "snr_ladder": "[5, 8, 12, 20, 30]",
+    "draws_per_cell": "20",
+    "efficiency_floor_high_snr_ge12": "0.90   # at snr>=12",
+    "efficiency_floor_low_snr_ge8": "0.70    # at snr>=8",
+    "false_alarm_ceiling": "0.01",
+    "null_draws": "60 per detector"
+  },
+  "injection_waveform": "h(t) = A exp(-(t-t0)/tau) sin(2 pi f (t-t0)) * [t>=t0]; A chosen so that sqrt(sum(h^2))/sigma_whitened = SNR",
+  "detection_criterion": "pencil cluster within F_TOL_HZ of injected f AND relative tau error <= TAU_TOL_REL AND cluster amp >= off-source amp-99%",
+  "gate_criteria": {
+    "efficiency_floor_high": "min efficiency over all cells at SNR>=12 >= 0.90",
+    "efficiency_floor_low": "min efficiency over all cells at SNR>=8 >= 0.70",
+    "false_alarm": "pure-noise hit rate <= 0.01",
+    "per_detector": "H1 and L1 each evaluated independently; gate passes only if BOTH pass"
+  },
+  "runner_sha256": "1eb3c423e3176f576f8097812775cfd7e618719b0ad9738876240893b5e7f519",
+  "v2_prereg_sha256": "ac0a7a12c1b3e8e66a7913d4e20c9920e24a2641ff6e8de499fea6f3d2211d4b",
+  "no_threshold_post_adjustment": "Any gate failure -> document, fix extractor, NEW gate run. No threshold changes after seeing results."
+}

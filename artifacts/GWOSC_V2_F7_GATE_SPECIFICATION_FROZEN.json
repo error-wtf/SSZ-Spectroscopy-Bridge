@@ -70,5 +70,15 @@
     "unchanged": "floors 0.90/0.70/0.01; grids; SNR ladder; draws; seeds; GPS event time",
     "runner_sha256_r4": "17d671bc35e469d04d1c98488b4515648ce7d9d7a9b7d603d005bf3a3d8f9ecc",
     "fix_note": "r4 compile fix: missing f_fft_power assignment (the r4 edit replaced only one of two occurrences)"
+  },
+  "v2_revision_r5": {
+    "revision": "r5",
+    "created_utc": "2026-10-09T03:13:39+00:00",
+    "trigger": "r4 diagnostic: the power-excess detection worked (injection power 191 vs threshold 10.8 at SNR 30) but the PENCIL f-estimate carried ~10% error at short windows (58 ms -> spectral resolution ~17 Hz), so the fixed 10 Hz f-tolerance was below the achievable resolution and every hit failed on the f-criterion.",
+    "r5_fix": {
+      "f_tolerance": "f_tol_eff = max(F_TOL_HZ, 2/T_window) \u2014 tolerance matches the actual spectral resolution of the analysis window. NOT a loosening: the fixed 10 Hz was technically unreachable for a 58 ms window (Rayleigh limit ~17 Hz)."
+    },
+    "unchanged": "power-excess detection; tau tolerance; floors 0.90/0.70/0.01; grids; ladder; draws; seeds",
+    "runner_sha256_r5": "9739705947c9ebc3e60a0cf4c5a0e3caf6b2eaccab2b1acf6dc8dda103517b23"
   }
 }

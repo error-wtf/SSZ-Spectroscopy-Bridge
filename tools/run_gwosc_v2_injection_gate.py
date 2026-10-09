@@ -230,7 +230,11 @@ def main():
                         f_fft = float(fr[band][int(np.argmax(spec[band]))])
                         f_fft_power = float(np.max(spec[band]))
                         hit_power = f_fft_power > amp_99
-                        hit_f = any(abs(c["f"] - f_inj) <= F_TOL_HZ for c in clusters)
+                        # r5: f tolerance = max(F_TOL_HZ, 2/T_window) — the pencil
+                        # resolution for a T-second window; a 10 Hz fixed tolerance
+                        # was below the achievable spectral resolution
+                        f_tol_eff = max(F_TOL_HZ, 2.0 / (seg_len * dt))
+                        hit_f = any(abs(c["f"] - f_inj) <= f_tol_eff for c in clusters)
                         hit_tau = any(abs(c["tau"] - tau_inj) / tau_inj <= TAU_TOL_REL
                                        for c in clusters)
                         hit = bool(hit_power and hit_f and hit_tau)

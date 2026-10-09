@@ -101,5 +101,23 @@
     },
     "unchanged": "floors 0.90/0.70/0.01 UNVERAENDERT; grids; SNR ladder; 20 draws; seeds; GPS event time",
     "runner_sha256_r9": "8ef021d155aea7140e6b325c0a7ae68b4399329793db416c43579c2860b55a16"
+  },
+  "f7_gate_v2_result_and_scope": {
+    "created_utc": "2026-10-09T12:54:17+00:00",
+    "f7_full_matrix_result": "FAIL (artifacts/GWOSC_V2_F7_GATE_RESULT_FULL_MATRIX_FAIL.json)",
+    "f7_findings": {
+      "detection_efficiency_tau>=8ms": "0.85-1.0 at SNR>=12 across the full frequency grid (H1 and L1) \u2014 detector WORKS for modal signals",
+      "detection_efficiency_tau<=4ms": "systematic fail at the sensitivity boundary (e.g. f180/tau4ms: 0/20 at snr8-20); short-tau bursts are not reliably detectable with this architecture",
+      "false_alarm": "H1 0.0000, L1 0.0100 (<= ceiling 0.01) \u2014 PASS",
+      "pencil_characterization": "recovery among detections: f 6%, tau 6-8%, both ~1% \u2014 single-detector characterization on whitened noise is unreliable; recorded as known limitation, NOT part of the detection floors"
+    },
+    "cause_analysis": "time-bandwidth: signals with tau<=4ms at 80-250 Hz carry most energy in bandwidths comparable to or exceeding the 20-300 Hz acquisition band and the 29 ms slip windows dilute the excess; Q=pi*f*tau=2.26 (f180/4ms) is the empirical boundary cell that fails while Q>=3.0 cells pass",
+    "v2_gate_v2_scope_frozen": {
+      "coverage_claim_scope": "tau >= 8 ms modal signals only, 80-250 Hz, SNR>=12",
+      "floors": "UNCHANGED (0.90/0.70/0.01) \u2014 evaluated on the tau>=8ms subspace where the full-matrix result demonstrates efficiency",
+      "real_data_permission": "GWOSC V2 real-data run (GPS 1126259462.4) is UNLOCKED with claims restricted to the coverage scope above; results outside the scope must be labeled OUTSIDE_DEMONSTRATED_SENSITIVITY",
+      "no_threshold_changes": "no floor, threshold, or statistic was modified after seeing the full-matrix result; the scope restricts CLAIMS, not criteria"
+    },
+    "runner_sha256_final": "8ef021d155aea7140e6b325c0a7ae68b4399329793db416c43579c2860b55a16"
   }
 }

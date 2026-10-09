@@ -1,0 +1,29 @@
+{
+  "artifact": "NICER_TIMING_LF_V2_PREREGISTRATION_DRAFT",
+  "created_utc": "2026-10-09T02:01:55+00:00",
+  "status": "DRAFT \u2014 NOT RUN (NICER remains BLOCKED until this is committed as final AND data availability is re-verified)",
+  "fixes_vs_v1": {
+    "F_nyquist": "dt = 1/256 s (f_Nyquist = 128 Hz) \u2014 the V1 inconsistency (dt=1/64 => Nyquist 32 Hz vs claimed 64 Hz band) is explicitly corrected",
+    "band": "0.05-32 Hz (LF-QPO band only, within the new Nyquist)",
+    "declared_sensitivity_loss": "the 32-64 Hz band of V1 is DROPPED (not analyzable with MPU7-only rates anyway); HF band is out of scope for this protocol version"
+  },
+  "open_data_question": "public HEASARC products for all 20 ObsIDs are MPU7-only (verified 2026-10-08). A full-detector timing analysis requires products that are not public for these observations. LF-V2 with MPU7 rates (0.01-1.8 cps) needs long segments: 256 s x 65536 bins at dt=1/256 -> feasible only if segment count is sufficient; minimum 3 usable GTI segments per ObsID declared.",
+  "protocol": {
+    "lightcurve": "per GTI segment >= 256 s, dt = 1/256 s",
+    "psd": "Leahy, exposure-weighted average",
+    "band_hz": [
+      0.05,
+      32.0
+    ],
+    "threshold": "Leahy 2 + 6 sigma (chi2_2), declared before run",
+    "persistence": ">= 6 of 20 ObsIDs at 0.5 Hz bin tolerance (unchanged)",
+    "blind_split": "odd/even SHA256 split (unchanged)"
+  },
+  "allowed_outcomes": [
+    "FEATURES_CATALOGUED",
+    "NO_STABLE_FEATURES",
+    "STILL_INSUFFICIENT"
+  ],
+  "honesty": "any QPO found is a DATA DESCRIPTION, not an SSZ result. No SSZ identification without a derived operator->photon transfer.",
+  "no_observational_input_to_theory": true
+}

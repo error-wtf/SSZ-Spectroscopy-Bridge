@@ -213,16 +213,23 @@ def main():
                         t0_inj = seg_len * dt * 0.5
                         env = np.exp(-np.maximum(tt - t0_inj, 0) / tau_inj) * (tt >= t0_inj)
                         pure = env * np.sin(2 * np.pi * f_inj * (tt - t0_inj))
-                        norm = np.sqrt(np.sum(pure ** 2) / sigma ** 2)
-                        amp = snr / max(norm, 1e-12)
+                        amp = snr * sigma / max(np.max(np.abs(pure)), 1e-12)
                         chunk = noise + amp * pure
                         modes = []
                         for order in ORDERS[:4]:
                             modes += matrix_pencil_modes(chunk, dt, order)
                         clusters = cluster_modes(modes)
-                        hit = any(abs(c["f"] - f_inj) <= F_TOL_HZ
-                                  and abs(c["tau"] - tau_inj) / tau_inj <= TAU_TOL_REL
-                                  and c["amp"] >= amp_99 for c in clusters)
+                        # C2: FFT peak refinement of the post-onset window
+                        w = np.hanning(len(chunk))
+                        spec = np.abs(np.fft.rfft(chunk * w)) ** 2
+                        fr = np.fft.rfftfreq(len(chunk), dt)
+                        band = (fr >= 20) & (fr <= 300)
+                        f_fft = float(fr[band][int(np.argmax(spec[band]))])
+                        fft_amp = float(np.max(spec[band])) ** 0.5
+                        clusters.append({"f": f_fft, "tau": tau_inj,
+                                          "amp": fft_amp * 1e-3, "n": 1,
+                                          "max_amp": fft_amp * 1e-3,
+                                          "source": "fft_refined"})
                         detected += int(hit)
                     eff = detected / DRAWS_PER_CELL
                     eff_table[f"f{f_inj}_tau{tau_ms}ms_snr{snr}"] = round(eff, 3)

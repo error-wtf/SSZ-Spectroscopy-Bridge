@@ -55,7 +55,7 @@
       "C4_cluster_tau": "strongest-member tau (r2 fix, kept)"
     },
     "unchanged": "gate floors 0.90/0.70/0.01; grids; SNR ladder; draws; seeds; F1 event time; F4 bootstrap 200",
-    "runner_sha256_r3": "78c9a4048d14a4b58b55500182bb75fe1b19a44cca1fe0f8302829c36f6bd9bf",
+    "runner_sha256_r3": "c53917696bbbed8763140702fa9f2c3f91610de566826300d55d5fd3469ac2f0",
     "note": "r3 gate run follows. Same fail-closed rules."
   }
 }

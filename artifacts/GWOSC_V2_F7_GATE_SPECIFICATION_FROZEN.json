@@ -139,5 +139,13 @@
     "acceptance": "result is accepted AS FALLING \u2014 no post-hoc scope or floor changes; a FAIL means the extractor stays BLOCKED for modal claims",
     "runner": "tools/run_gwosc_v2_injection_gate_v3_holdout.py",
     "runner_sha256": "bc5903d686235fde2380e3489a8e6f38a405469f6bde9482ee9f111e1fb6ee9e"
+  },
+  "f7_gate_v3_holdout_result": {
+    "completed_utc": "2026-10-09T17:21:19+00:00",
+    "result": "FAIL",
+    "detail": "H1 eff(min snr>=12 in scope)=0.05, eff(min snr>=8)=0.05, FA=0.0125; L1 eff=0.0/0.0, FA=0.0100 \u2014 floors 0.90/0.70/0.01 far from met on held-out off-source segments (96-224s after event).",
+    "interpretation": "the r9 result on the original segments does NOT replicate on held-out data: the slip-window statistic as configured is not a reliable modal detector at these SNRs. The extractor remains BLOCKED for any modal claim. This is the accepted, honest outcome per the frozen acceptance rule.",
+    "artifact": "GWOSC_V2_F7_GATE_V3_HOLDOUT_RESULT_FAIL.json",
+    "runner_sha256": "bc5903d686235fde2380e3489a8e6f38a405469f6bde9482ee9f111e1fb6ee9e"
   }
 }

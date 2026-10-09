@@ -112,9 +112,12 @@ def matrix_pencil_modes(y, dt, order):
         if 20 <= f <= 300 and tau >= 0.001:
             n = len(y)
             basis = z ** np.arange(n)
-            coef = abs(np.vdot(basis, y)) / max(np.vdot(basis, basis), 1e-300)
+            # complex LSQ excitation coefficient; angle(c) = physical excitation
+            # phase of this mode (owner review: angle(z) is only the per-sample
+            # phase advance 2*pi*f*dt and carries NO detector-phase information)
+            c = np.vdot(basis, y) / max(np.vdot(basis, basis), 1e-300)
             modes.append({"f": float(f), "tau": float(tau),
-                          "amp": float(coef), "phase": float(np.angle(z))})
+                          "amp": float(abs(c)), "phase": float(np.angle(c))})
     return modes
 
 
@@ -318,6 +321,9 @@ def main():
               f"{[(m['f'], m['tau'], m['ladder_stable']) for m in stable]}", flush=True)
 
     # ---------- F6: H1/L1 coherence with time-delay correction ----------
+    # owner-review fix: phases are now the complex LSQ excitation phases
+    # (angle of the mode amplitude), not angle(z); expected H1->L1 phase shift
+    # for a common sky source includes the 2*pi*f*delay term
     coherent = []
     h1_modes = [m for m in results["H1"]["nominal_modes"] if m["ladder_stable"]]
     l1_modes = [m for m in results["L1"]["nominal_modes"] if m["ladder_stable"]]

@@ -33,5 +33,15 @@
   },
   "runner_sha256": "1eb3c423e3176f576f8097812775cfd7e618719b0ad9738876240893b5e7f519",
   "v2_prereg_sha256": "ac0a7a12c1b3e8e66a7913d4e20c9920e24a2641ff6e8de499fea6f3d2211d4b",
-  "no_threshold_post_adjustment": "Any gate failure -> document, fix extractor, NEW gate run. No threshold changes after seeing results."
+  "no_threshold_post_adjustment": "Any gate failure -> document, fix extractor, NEW gate run. No threshold changes after seeing results.",
+  "v2_revision": {
+    "revision": "r2",
+    "date": "2026-10-09T00:52:24+00:00",
+    "trigger": "first gate run (r1) FAILED: efficiency 0.0 at all SNRs, both detectors",
+    "root_cause": "two extractor defects, found by isolating the pencil on a pure synthetic damped sinusoid: (a) the zero-padded pre-onset section of the analysis window destroyed tau estimation; (b) cluster tau averaging over mixed poles washed out the true value. Fix: pencil runs on the post-onset segment only; cluster tau taken from the strongest member.",
+    "clean_grid_recovery_after_fix": "16/16 (f x tau grid, noise-free)",
+    "constants_F1_F6_and_gate_floors": "UNCHANGED (same frozen values)",
+    "runner_sha256_r2": "5d5b544d37c03ca7e1b71a0a180e32694821865c856c4fca7cf27bb2381e7bd9",
+    "note": "r2 gate run started after this entry; verdict against the SAME frozen floors"
+  }
 }

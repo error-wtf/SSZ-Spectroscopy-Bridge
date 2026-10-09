@@ -146,7 +146,9 @@ def cluster_modes(modes, f_bin=10.0):
             if abs(c["f"] - m["f"]) < f_bin:
                 n = c["n"] + 1
                 c["f"] = (c["f"] * c["n"] + m["f"]) / n
-                c["tau"] = (c["tau"] * c["n"] + m["tau"]) / n
+                # tau from the strongest member (mean over mixed poles washes out)
+                if m["amp"] >= c["max_amp"]:
+                    c["tau"] = m["tau"]
                 c["amp"] = max(c["amp"], m["amp"])
                 c["n"] = n
                 break

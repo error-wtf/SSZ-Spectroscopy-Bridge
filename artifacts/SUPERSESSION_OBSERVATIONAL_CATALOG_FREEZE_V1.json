@@ -1,0 +1,14 @@
+{
+ "artifact": "SUPERSESSION_OBSERVATIONAL_CATALOG_FREEZE_V1",
+ "created_utc": "2026-10-09T13:08:01+00:00",
+ "supersedes": "OBSERVATIONAL_CATALOG_FREEZE_V1.json",
+ "superseded_sha256": "82a78713fd86efb6cfb95de398579429db686f88834d8d417a1c0d37d351a530",
+ "status": "PARTIAL_SUPERSESSION",
+ "invalidated_entries": {
+  "gwosc_gw150914": "entry based on RETRACTED observed-modes V1; the observational status for GW150914 is OPEN again and now covered by GWOSC_GW150914_OBSERVED_MODES_V2.json"
+ },
+ "unchanged_entries": [
+  "nicer (independently BLOCKED \u2014 data insufficiency stands)"
+ ],
+ "historical_file_preserved": true
+}

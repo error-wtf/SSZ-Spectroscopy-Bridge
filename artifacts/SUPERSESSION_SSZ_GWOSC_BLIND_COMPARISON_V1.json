@@ -1,0 +1,11 @@
+{
+ "artifact": "SUPERSESSION_SSZ_GWOSC_BLIND_COMPARISON_V1",
+ "created_utc": "2026-10-09T13:08:01+00:00",
+ "supersedes": "SSZ_GWOSC_BLIND_COMPARISON_V1.json",
+ "superseded_sha256": "2dd40ca34da730f6e92c59dc07dd23b830dd793975aeae6e841cbc1887efe612",
+ "status": "SUPERSEDED_INVALID_INPUT",
+ "reason": "the comparison consumed GWOSC_GW150914_OBSERVED_MODES_V1, which was RETRACTED_WRONG_TIME_WINDOW_AND_CRITERIA (GPS 1126259462.0 instead of 1126259462.4; F1-F6 defects). Any agreement/disagreement statement built on V1 is void as an observational result.",
+ "historical_file_preserved": true,
+ "valid_successor": "GWOSC_GW150914_OBSERVED_MODES_V2.json",
+ "note": "the SSZ theory-side nulls referenced by V1 remain valid and untouched"
+}

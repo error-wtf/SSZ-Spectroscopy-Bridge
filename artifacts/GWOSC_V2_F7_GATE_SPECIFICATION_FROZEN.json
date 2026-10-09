@@ -119,5 +119,8 @@
       "no_threshold_changes": "no floor, threshold, or statistic was modified after seeing the full-matrix result; the scope restricts CLAIMS, not criteria"
     },
     "runner_sha256_final": "8ef021d155aea7140e6b325c0a7ae68b4399329793db416c43579c2860b55a16"
+  },
+  "real_data_run": {
+    "runner_sha256_observed_v2": "d2512fe432fd6dfbd9b0125a3b5de88f8f51b975191e529dc46e9bfcf9fccfcc"
   }
 }

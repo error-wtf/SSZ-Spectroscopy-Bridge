@@ -1,0 +1,15 @@
+{
+ "artifact": "SUPERSESSION_GWOSC_GW150914_OBSERVED_MODES_V2",
+ "created_utc": "2026-10-09T16:40:05+00:00",
+ "supersedes": "GWOSC_GW150914_OBSERVED_MODES_V2.json",
+ "superseded_sha256": "79f068cfbbadd85291d0f168fb0da0eea03d90ef6df77f02a6e47668afd89f5d",
+ "status": "SUPERSEDED_PENDING_REVALIDATION",
+ "owner_review_findings": {
+  "phase_gate_invalid": "VERIFIED: angle(z) is the per-sample phase advance (~2*pi*f*dt), identical in both detectors; the reported -0.046 rad coherence is trivially satisfied for ANY pair and carries no physics. Reproduction: identical dt -> dphase ~= -expected delay phase mod 2pi regardless of the signals.",
+  "sensitivity_floors_not_met": "VERIFIED from GWOSC_V2_F7_GATE_RESULT_FULL_MATRIX_FAIL.json: min recovery at SNR>=12 in the tau>=8ms scope is 0.85 (H1) / 0.55 (L1) against the frozen 0.90 floor. The scope restriction does NOT constitute a F7 PASS.",
+  "characterization_recovery": "VERIFIED: joint f+tau recovery ~1% of detections \u2014 modal parameters (f, tau, phase) of the candidate carry large unquantified uncertainty."
+ },
+ "retained": "broadband detection above threshold in both detectors remains a genuine observation of EXCESS ENERGY, worth study",
+ "next": "F7-V3 holdout validation (new off-source draws, floors unchanged) + corrected complex-amplitude phase gate before any candidate claim",
+ "historical_file_preserved": true
+}

@@ -187,8 +187,11 @@ def main():
             seg = noise_segs[k % len(noise_segs)]
             s0 = int(rng.integers(1000, len(seg) - seg_len - 1000))
             chunk = seg[s0:s0 + seg_len]
-            for order in ORDERS[:4]:
-                null_amps += [m["amp"] for m in matrix_pencil_modes(chunk, dt, order)]
+            w = np.hanning(len(chunk))
+            spec = np.abs(np.fft.rfft(chunk * w)) ** 2
+            fr = np.fft.rfftfreq(len(chunk), dt)
+            band = (fr >= 20) & (fr <= 300)
+            null_amps.append(float(np.max(spec[band])))
         amp_99 = float(np.percentile(null_amps, 99))
         print(f"[{det}] off-source amp 99% = {amp_99:.3e} ({len(null_amps)} samples)", flush=True)
 
@@ -226,10 +229,11 @@ def main():
                         band = (fr >= 20) & (fr <= 300)
                         f_fft = float(fr[band][int(np.argmax(spec[band]))])
                         fft_amp = float(np.max(spec[band])) ** 0.5
-                        clusters.append({"f": f_fft, "tau": tau_inj,
-                                          "amp": fft_amp * 1e-3, "n": 1,
-                                          "max_amp": fft_amp * 1e-3,
-                                          "source": "fft_refined"})
+                        hit_power = f_fft_power > amp_99
+                        hit_f = any(abs(c["f"] - f_inj) <= F_TOL_HZ for c in clusters)
+                        hit_tau = any(abs(c["tau"] - tau_inj) / tau_inj <= TAU_TOL_REL
+                                       for c in clusters)
+                        hit = bool(hit_power and hit_f and hit_tau)
                         detected += int(hit)
                     eff = detected / DRAWS_PER_CELL
                     eff_table[f"f{f_inj}_tau{tau_ms}ms_snr{snr}"] = round(eff, 3)

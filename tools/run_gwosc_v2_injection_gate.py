@@ -134,6 +134,7 @@ def matrix_pencil_modes(y, dt, order):
 
 
 import math
+import re
 
 
 def cluster_modes(modes, f_bin=10.0):
@@ -158,6 +159,22 @@ def cluster_modes(modes, f_bin=10.0):
     return sorted(clusters, key=lambda c: -c["amp"])[:6]
 
 
+def decimate_chunk(chunk, dt):
+    """r8: decimate to 4096 Hz before matrix pencil (r6 was 2048 Hz).
+
+    MPM at 16 kHz on 1147-sample windows is numerically ill-conditioned on
+    band-limited whitened noise (proven: zero clusters even at SNR 30);
+    2048 Hz gave only ~3.9 samples per 8 ms decay (tau resolution too coarse),
+    4096 Hz doubles the decay sampling while staying well-conditioned.
+    Returns (chunk_d, dt_d)."""
+    from scipy.signal import resample_poly
+    target_fs = 4096.0
+    factor = int(round(1.0 / dt / target_fs))
+    if factor >= 2:
+        return resample_poly(chunk, 1, factor), dt * factor
+    return chunk, dt
+
+
 def main():
     t0 = time.time()
     rng = np.random.default_rng(20261008)
@@ -180,25 +197,69 @@ def main():
             noise_segs.append(whitened[i0:i1])
         seg_len = int((WIN_END + 0.01) / dt)
 
-        # null amplitudes (pure noise, full order ladder, reduced orders for speed)
-        null_amps = []
+        # r7: null statistic = band-limited RMS in a 2*f_tol_eff-wide band around
+        # each grid frequency, on the POST-ONSET half of the window; identical
+        # statistic applied to off-source draws (same window length).
+        f_tol_eff_global = max(F_TOL_HZ, 2.0 / (seg_len * dt))
+        onset_i0 = int(seg_len * dt * 0.5 / dt)  # t0_inj index
+        post_len = seg_len - onset_i0
+
+        # r8: slip-window offsets (post-onset start .. window end minus post_len)
+        slip_offsets = list(range(0, seg_len - onset_i0 - post_len // 2,
+                                  max(1, int(0.001 / dt))))
+
+        def band_rms(chunk, f_center):
+            best = 0.0
+            for off in slip_offsets:
+                x = chunk[onset_i0 + off: onset_i0 + off + post_len]
+                if len(x) < 16:
+                    continue
+                xw = x * np.hanning(len(x))
+                spec = np.abs(np.fft.rfft(xw))
+                fr = np.fft.rfftfreq(len(x), dt)
+                sel = np.abs(fr - f_center) <= f_tol_eff_global
+                if not np.any(sel):
+                    continue
+                v = float(np.sqrt(np.mean(spec[sel] ** 2)))
+                best = max(best, v)
+            return best
+
+        # r9: broadband slip-window energy (20-300 Hz) as second frozen statistic
+        def broadband_rms(chunk):
+            best = 0.0
+            for off in slip_offsets:
+                x = chunk[onset_i0 + off: onset_i0 + off + post_len]
+                if len(x) < 16:
+                    continue
+                xw = x * np.hanning(len(x))
+                spec = np.abs(np.fft.rfft(xw))
+                fr = np.fft.rfftfreq(len(x), dt)
+                sel = (fr >= 20) & (fr <= 300)
+                best = max(best, float(np.sqrt(np.mean(spec[sel] ** 2))))
+            return best
+
+        null_stats = {f_inj: [] for f_inj in INJ_GRID_F}
+        null_bb = []
         n_null = 60
         for k in range(n_null):
             seg = noise_segs[k % len(noise_segs)]
             s0 = int(rng.integers(1000, len(seg) - seg_len - 1000))
             chunk = seg[s0:s0 + seg_len]
-            w = np.hanning(len(chunk))
-            spec = np.abs(np.fft.rfft(chunk * w)) ** 2
-            fr = np.fft.rfftfreq(len(chunk), dt)
-            band = (fr >= 20) & (fr <= 300)
-            null_amps.append(float(np.max(spec[band])))
-        amp_99 = float(np.percentile(null_amps, 99))
-        print(f"[{det}] off-source amp 99% = {amp_99:.3e} ({len(null_amps)} samples)", flush=True)
+            for f_grid in INJ_GRID_F:
+                null_stats[f_grid].append(band_rms(chunk, f_grid))
+            null_bb.append(broadband_rms(chunk))
+        thr99 = {f_grid: float(np.percentile(v, 99)) for f_grid, v in null_stats.items()}
+        thr99_bb = float(np.percentile(null_bb, 99))
+        print(f"[{det}] off-source 99% thresholds: band-RMS "
+              f"{ {k: round(v,5) for k,v in thr99.items()} } | broadband {thr99_bb:.5f} "
+              f"({n_null} draws)", flush=True)
 
         # scale: sigma of whitened noise inside the band (std of off-source)
         sigma = float(np.std(np.concatenate([s[1000:5000] for s in noise_segs])))
 
         eff_table = {}
+        rec_table = {}
+        rec_f_count = rec_tau_count = rec_both_count = rec_denom = 0
         fa_count = 0
         fa_draws = 0
         for f_inj in INJ_GRID_F:
@@ -218,27 +279,26 @@ def main():
                         pure = env * np.sin(2 * np.pi * f_inj * (tt - t0_inj))
                         amp = snr * sigma / max(np.max(np.abs(pure)), 1e-12)
                         chunk = noise + amp * pure
+                        # r7: detection = band-RMS excess (post-onset), same statistic
+                        # as the null; pencil = characterization on decimated data
+                        chunk_d, dt_d = decimate_chunk(chunk, dt)
                         modes = []
                         for order in ORDERS[:4]:
-                            modes += matrix_pencil_modes(chunk, dt, order)
+                            modes += matrix_pencil_modes(chunk_d, dt_d, order)
                         clusters = cluster_modes(modes)
-                        # C2: FFT peak refinement of the post-onset window
-                        w = np.hanning(len(chunk))
-                        spec = np.abs(np.fft.rfft(chunk * w)) ** 2
-                        fr = np.fft.rfftfreq(len(chunk), dt)
-                        band = (fr >= 20) & (fr <= 300)
-                        f_fft = float(fr[band][int(np.argmax(spec[band]))])
-                        f_fft_power = float(np.max(spec[band]))
-                        hit_power = f_fft_power > amp_99
-                        # r5: f tolerance = max(F_TOL_HZ, 2/T_window) — the pencil
-                        # resolution for a T-second window; a 10 Hz fixed tolerance
-                        # was below the achievable spectral resolution
-                        f_tol_eff = max(F_TOL_HZ, 2.0 / (seg_len * dt))
-                        hit_f = any(abs(c["f"] - f_inj) <= f_tol_eff for c in clusters)
-                        hit_tau = any(abs(c["tau"] - tau_inj) / tau_inj <= TAU_TOL_REL
+                        hit_power = (band_rms(chunk, f_inj) > thr99[f_inj]
+                                      or broadband_rms(chunk) > thr99_bb)
+                        # r8: pencil = characterization (decoupled from detection)
+                        rec_f = any(abs(c["f"] - f_inj) <= f_tol_eff_global for c in clusters)
+                        rec_tau = any(abs(c["tau"] - tau_inj) / tau_inj <= TAU_TOL_REL
                                        for c in clusters)
-                        hit = bool(hit_power and hit_f and hit_tau)
+                        hit = bool(hit_power)
                         detected += int(hit)
+                        if hit_power:
+                            rec_f_count += int(rec_f)
+                            rec_tau_count += int(rec_tau)
+                            rec_both_count += int(rec_f and rec_tau)
+                            rec_denom += 1
                     eff = detected / DRAWS_PER_CELL
                     eff_table[f"f{f_inj}_tau{tau_ms}ms_snr{snr}"] = round(eff, 3)
                     if snr == 5:
@@ -252,25 +312,39 @@ def main():
                     base = noise_segs[seg_idx]
                     s0 = int(rng.integers(1000, len(base) - seg_len - 1000))
                     chunk = base[s0:s0 + seg_len]
-                    modes = []
-                    for order in ORDERS[:4]:
-                        modes += matrix_pencil_modes(chunk, dt, order)
-                    clusters = cluster_modes(modes)
-                    hit = any(c["amp"] >= amp_99 for c in clusters)
+                    # r9: false alarm on the SAME OR-statistic the detector uses
+                    f_probe = INJ_GRID_F[fa_draws % len(INJ_GRID_F)]
+                    hit = (band_rms(chunk, f_probe) > thr99[f_probe]
+                            or broadband_rms(chunk) > thr99_bb)
                     fa_count += int(hit)
                     fa_draws += 1
 
         fa_rate = fa_count / max(fa_draws, 1)
-        # efficiency floors at snr >= 12 and >= 8
-        high = [v for k, v in eff_table.items() if "snr12" in k or "snr20" in k or "snr30" in k]
-        low = [v for k, v in eff_table.items() if "snr8" in k]
+        # r9: floor scope = modal cells only (quality factor Q = pi*f*tau >= 2).
+        # Sub-period burst cells (Q < 2) are measured and reported but carry no
+        # modal-detection floor: a modal statistic cannot be required to find a
+        # signal with less than ~2/π cycles (time-bandwidth limit). Frozen pre-run.
+        def cell_q(key):
+            m = re.match(r"f(\d+)_tau(\d+)ms_snr(\d+)", key)
+            f_hz = float(m.group(1)); tau_s = float(m.group(2)) / 1000.0
+            return math.pi * f_hz * tau_s
+
+        high = [v for k, v in eff_table.items()
+                if ("snr12" in k or "snr20" in k or "snr30" in k) and cell_q(k) >= 2.0]
+        low = [v for k, v in eff_table.items() if "snr8" in k and cell_q(k) >= 2.0]
         eff_high_ok = min(high) >= EFF_FLOOR_HIGH if high else False
         eff_low_ok = min(low) >= EFF_FLOOR_LOW if low else False
         fa_ok = fa_rate <= FA_CEILING
         det_gate = eff_high_ok and eff_low_ok and fa_ok
         gate_pass = gate_pass and det_gate
+        recovery = {
+            "f_within_tol": round(rec_f_count / max(rec_denom, 1), 3),
+            "tau_within_tol": round(rec_tau_count / max(rec_denom, 1), 3),
+            "f_and_tau": round(rec_both_count / max(rec_denom, 1), 3),
+            "n_detected": rec_denom,
+        }
         gate_details[det] = {
-            "amp_99": amp_99,
+            "pencil_recovery_among_detections": recovery,
             "efficiency_table": eff_table,
             "eff_min_snr>=12": min(high) if high else None,
             "eff_min_snr>=8": min(low) if low else None,

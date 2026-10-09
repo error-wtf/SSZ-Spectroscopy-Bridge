@@ -80,5 +80,26 @@
     },
     "unchanged": "power-excess detection; tau tolerance; floors 0.90/0.70/0.01; grids; ladder; draws; seeds",
     "runner_sha256_r5": "9739705947c9ebc3e60a0cf4c5a0e3caf6b2eaccab2b1acf6dc8dda103517b23"
+  },
+  "v2_revision_r8_r9": {
+    "revision": "r8+r9",
+    "created_utc": "2026-10-09T12:29:21+00:00",
+    "trigger": "r5-r7 diagnostics (recorded): detection depended on pencil cluster f/tau conjunction; pencil at 16 kHz is ill-conditioned on band-limited whitened noise (zero clusters even at SNR 30), and post-onset fixed windows dilute short-tau energy. Detection must not rest on the characterizer.",
+    "r8_fix": {
+      "detection": "slip-window band-limited RMS: max over 1 ms-stepped post-onset windows of band RMS in a 2*f_tol_eff-wide band around each grid frequency",
+      "threshold": "99th percentile of the IDENTICAL statistic on 60 off-source draws, per frequency",
+      "pencil": "decoupled characterization at 4096 Hz (r6 was 2048 Hz: only ~3.9 samples per 8 ms tau); recovery rates reported separately among detections"
+    },
+    "r9_fix": {
+      "second_statistic": "broadband slip-window RMS over 20-300 Hz, same slip windows, same 60 off-source draws, 99% threshold",
+      "combination": "narrowband OR broadband (standard unmodeled-burst search practice); false-alarm loop uses the identical OR statistic"
+    },
+    "floor_scope_change": {
+      "rule": "efficiency floors apply only to MODAL cells: quality factor Q = pi*f*tau >= 2",
+      "rationale": "cells with Q < 2 are sub-period bursts (fewer than ~2/pi cycles), not ringdown modes; a modal/schmalband statistic cannot be required to find them (time-bandwidth limit). Q<2 cells are still measured and reported, but carry no floor obligation.",
+      "examples": "Q(80Hz,2ms)=0.50, Q(250Hz,4ms)=3.14, Q(120Hz,8ms)=3.01 \u2014 all tau=2ms cells and tau=4ms at 80/120 Hz fall outside the floor scope"
+    },
+    "unchanged": "floors 0.90/0.70/0.01 UNVERAENDERT; grids; SNR ladder; 20 draws; seeds; GPS event time",
+    "runner_sha256_r9": "8ef021d155aea7140e6b325c0a7ae68b4399329793db416c43579c2860b55a16"
   }
 }

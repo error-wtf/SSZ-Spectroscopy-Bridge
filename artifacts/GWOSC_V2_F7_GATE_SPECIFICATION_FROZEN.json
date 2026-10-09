@@ -122,5 +122,22 @@
   },
   "real_data_run": {
     "runner_sha256_observed_v2": "d2512fe432fd6dfbd9b0125a3b5de88f8f51b975191e529dc46e9bfcf9fccfcc"
+  },
+  "f7_gate_v3_holdout": {
+    "created_utc": "2026-10-09T16:40:25+00:00",
+    "purpose": "independent revalidation of the F7 gate on HELD-OUT off-source data after owner review showed the tau>=8ms scope does not meet the original floors on the r9 data",
+    "floors": "UNCHANGED 0.90 / 0.70 / 0.01 (H1 high / L1 high+low / FA)",
+    "scope": "tau >= 8 ms (modal cells, Q = pi*f*tau >= 2)",
+    "holdout_segments_s_after_event": [
+      96,
+      128,
+      160,
+      224
+    ],
+    "statistics": "identical to r9 (slip-window band-RMS OR broadband, 60 null draws, 20 draws/cell)",
+    "seed": 20261009,
+    "acceptance": "result is accepted AS FALLING \u2014 no post-hoc scope or floor changes; a FAIL means the extractor stays BLOCKED for modal claims",
+    "runner": "tools/run_gwosc_v2_injection_gate_v3_holdout.py",
+    "runner_sha256": "bc5903d686235fde2380e3489a8e6f38a405469f6bde9482ee9f111e1fb6ee9e"
   }
 }

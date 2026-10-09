@@ -57,5 +57,17 @@
     "unchanged": "gate floors 0.90/0.70/0.01; grids; SNR ladder; draws; seeds; F1 event time; F4 bootstrap 200",
     "runner_sha256_r3": "c53917696bbbed8763140702fa9f2c3f91610de566826300d55d5fd3469ac2f0",
     "note": "r3 gate run follows. Same fail-closed rules."
+  },
+  "v2_revision_r4": {
+    "revision": "r4",
+    "created_utc": "2026-10-09T02:24:59+00:00",
+    "trigger": "r3 FAILED again (efficiency 0.0). Diagnosis: the detection statistic compared pencil-cluster amplitudes against a pencil-null-99 threshold \u2014 mixing two incompatible scales; and FFT-refined 'modes' were appended with an arbitrary 1e-3 scaling. The detector-vs-null comparison must live in ONE statistic.",
+    "r4_fix": {
+      "detection_statistic": "FFT power excess: max power in the 20-300 Hz band of the post-onset Hann-windowed segment, compared against the off-source power-99 threshold (same statistic, same windowing)",
+      "characterization": "pencil clusters provide f and tau (no amplitude gate)",
+      "hit": "power excess AND pencil cluster within f_tol AND pencil cluster within tau_tol"
+    },
+    "unchanged": "floors 0.90/0.70/0.01; grids; SNR ladder; draws; seeds; GPS event time",
+    "runner_sha256_r4": "98f96803035bd0c604362cd760b1020c0470a4703caf4f68ccf766b58cf346b3"
   }
 }

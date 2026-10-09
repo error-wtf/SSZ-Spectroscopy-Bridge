@@ -1,6 +1,6 @@
 {
  "audit": "GWOSC_V2_INJECTION_GATE",
- "created_utc": "2026-10-08T22:04:40Z",
+ "created_utc": "2026-10-09T01:02:44Z",
  "gps_event": 1126259462.4,
  "fixes": "F1-F6 implemented; F7 gate is this run",
  "gate_details": {
@@ -195,5 +195,5 @@
  },
  "gate_pass": false,
  "verdict": "F7_GATE_FAIL \u2014 real-data run remains BLOCKED; extractor must be fixed",
- "wall_seconds": 9709.1
+ "wall_seconds": 1724.8
 }

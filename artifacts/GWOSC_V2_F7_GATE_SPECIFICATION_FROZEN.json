@@ -43,5 +43,19 @@
     "constants_F1_F6_and_gate_floors": "UNCHANGED (same frozen values)",
     "runner_sha256_r2": "5d5b544d37c03ca7e1b71a0a180e32694821865c856c4fca7cf27bb2381e7bd9",
     "note": "r2 gate run started after this entry; verdict against the SAME frozen floors"
+  },
+  "v2_revision_r3": {
+    "revision": "r3",
+    "date": "2026-10-09T01:35:39+00:00",
+    "trigger": "r2 FAILED both detectors: efficiency 0.0 at SNR 8-30 with tau 2-8 ms. Isolated diagnosis (pure + noisy injections): (1) the energy-SNR definition sqrt(sum h^2)/sigma under-declares the actual peak amplitude reaching the pencil at short tau; (2) pencil frequency resolution at ~1-cycle windows smears f (115 instead of 120), dragging the cluster centroid and failing the f-tolerance.",
+    "r3_fixes": {
+      "C1_snr_definition": "SNR = max |h_whitened| of the injected envelope peak (peak-SNR, standard detection definition) \u2014 injected amp set so that max|h_inj|/sigma = SNR",
+      "C2_fft_refinement": "before the pencil, refine the frequency estimate via the FFT peak of the post-onset window (parabolic interpolation); pencil is seeded/checked against it \u2014 acceptance still requires pencil-cluster agreement",
+      "C3_window": "pencil window = post-onset to window end (r2 fix, kept)",
+      "C4_cluster_tau": "strongest-member tau (r2 fix, kept)"
+    },
+    "unchanged": "gate floors 0.90/0.70/0.01; grids; SNR ladder; draws; seeds; F1 event time; F4 bootstrap 200",
+    "runner_sha256_r3": "78c9a4048d14a4b58b55500182bb75fe1b19a44cca1fe0f8302829c36f6bd9bf",
+    "note": "r3 gate run follows. Same fail-closed rules."
   }
 }

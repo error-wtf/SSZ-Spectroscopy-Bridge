@@ -1,0 +1,54 @@
+{
+  "artifact": "PHYSICS_MCP_B1_INITIALIZATION",
+  "created_utc": "2026-10-09T01:12:16+00:00",
+  "database_status": {
+    "integrity": "ok",
+    "snapshot_built_utc": "2026-10-07 21:40:40",
+    "unique_documents": 10145,
+    "chunks": 146530,
+    "sources": 18902,
+    "extraction_failures": 2,
+    "last_accumulation_utc": "2026-09-25 05:45:11"
+  },
+  "staleness_assessment": "snapshot predates today's commits (Closure 6fda729..d0b8516, Bridge cca6372..d6fbd34). Per B4: commit-bound source code and current certificates WIN over the RAG snapshot for implementation state. RAG is used as literature/evidence archive only.",
+  "source_hierarchy_applied": [
+    "1. commit-bound primary data + executed code (today's HEADs)",
+    "2. canonical current SSZ equations + certificates",
+    "3. independent math/experimental standards",
+    "4. validated control computations",
+    "5. legacy SSZ papers (historical hypotheses only)"
+  ],
+  "claims_checked_this_campaign": [
+    {
+      "claim": "trapped ground states l~256/257 (test fields)",
+      "source": "SSZ_P5_FULL_CLOSURE_MONOGRAPH_2026-09-16.pdf sec 12.3",
+      "sha256_prefix": "a028d69bd8e66886",
+      "class": "NUMERICALLY_VERIFIED (WKB, test-field only)",
+      "limit": "test fields != coupled HSVT operator (monograph states this itself)"
+    },
+    {
+      "claim": "N_max ~= 42 (pi precision limit)",
+      "source": "SegmentedSpacetimeandPi.md + prove_pi_limit_42_english.py",
+      "class": "FAIL",
+      "limit": "reverse-constructed; pi_eff -> 0; criterion triggers at N=17 (see ANTI_NUMEROLOGY_NMAX_AUDIT_V1)"
+    },
+    {
+      "claim": "1 MHz radio cutoff",
+      "source": "SSZ_BOOK_EN_FINAL_BEST_VERSION.md sec 3.21.2",
+      "class": "FAIL (as derivation)",
+      "limit": "unbound assertion; book concedes l_seg unknown (sec 6.7); N=4f tautology (SSZ_LEGACY_1MHZ_FORMULA_AUDIT)"
+    },
+    {
+      "claim": "resolution law d > log10(R/l_min)",
+      "source": "error propagation (owner reconstruction 2026-10-08)",
+      "class": "DERIVED",
+      "limit": "pure mathematics; l_min=lp is an assumption; R-dependent"
+    },
+    {
+      "claim": "GW150914 coalescence time 1126259462.4",
+      "source": "GWOSC/GWTC catalog value (owner review + file metadata cross-check)",
+      "class": "OBSERVED (published catalog)",
+      "limit": "V1 used 1126259462.0 \u2014 retracted for this reason"
+    }
+  ]
+}

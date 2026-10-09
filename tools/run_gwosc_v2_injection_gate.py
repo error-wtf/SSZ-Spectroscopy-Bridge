@@ -228,7 +228,7 @@ def main():
                         fr = np.fft.rfftfreq(len(chunk), dt)
                         band = (fr >= 20) & (fr <= 300)
                         f_fft = float(fr[band][int(np.argmax(spec[band]))])
-                        fft_amp = float(np.max(spec[band])) ** 0.5
+                        f_fft_power = float(np.max(spec[band]))
                         hit_power = f_fft_power > amp_99
                         hit_f = any(abs(c["f"] - f_inj) <= F_TOL_HZ for c in clusters)
                         hit_tau = any(abs(c["tau"] - tau_inj) / tau_inj <= TAU_TOL_REL

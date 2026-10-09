@@ -68,6 +68,7 @@
       "hit": "power excess AND pencil cluster within f_tol AND pencil cluster within tau_tol"
     },
     "unchanged": "floors 0.90/0.70/0.01; grids; SNR ladder; draws; seeds; GPS event time",
-    "runner_sha256_r4": "98f96803035bd0c604362cd760b1020c0470a4703caf4f68ccf766b58cf346b3"
+    "runner_sha256_r4": "17d671bc35e469d04d1c98488b4515648ce7d9d7a9b7d603d005bf3a3d8f9ecc",
+    "fix_note": "r4 compile fix: missing f_fft_power assignment (the r4 edit replaced only one of two occurrences)"
   }
 }

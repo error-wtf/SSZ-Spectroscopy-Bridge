@@ -1,0 +1,111 @@
+{
+  "artifact": "GWOSC_V2_INJECTION_GATE_PREREGISTRATION",
+  "created_utc": "2026-10-09T01:09:20+00:00",
+  "bridge_head": "6477c3ab0b82c7aa214525078d0a6607af38f1fe",
+  "supersedes": "F7 constants in GWOSC_V2_F7_GATE_SPECIFICATION_FROZEN.json (r2)",
+  "revision": "r2 (post root-cause fix of r1)",
+  "r1_history": {
+    "r1_result": "FAIL \u2014 efficiency 0.0 at all SNRs, both detectors",
+    "r1_root_cause": "(a) zero-padded pre-onset window destroyed tau estimation; (b) cluster tau averaging over mixed poles",
+    "r1_fix": "pencil runs on post-onset segment only; cluster tau from strongest member",
+    "clean_grid_recovery_after_fix": "16/16"
+  },
+  "frozen_constants": {
+    "gps_event_s": 1126259462.4,
+    "window_s": [
+      0.002,
+      0.06
+    ],
+    "start_ladder_s": [
+      -0.002,
+      0.0,
+      0.002,
+      0.004
+    ],
+    "end_ladder_s": [
+      0.03,
+      0.04,
+      0.06,
+      0.08
+    ],
+    "pencil_orders": [
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40
+    ],
+    "f_tol_hz": 10.0,
+    "tau_tol_rel": 0.5,
+    "bootstrap_resamples": 200,
+    "offsource_segments_s": [
+      [
+        -64,
+        -32
+      ],
+      [
+        -32,
+        -16
+      ],
+      [
+        16,
+        32
+      ],
+      [
+        32,
+        64
+      ]
+    ],
+    "injection_f_hz": [
+      80,
+      120,
+      180,
+      250
+    ],
+    "injection_tau_ms": [
+      2,
+      4,
+      8,
+      15
+    ],
+    "snr_ladder": [
+      5,
+      8,
+      12,
+      20,
+      30
+    ],
+    "draws_per_cell": 20,
+    "rng_seed": 20261008,
+    "null_draws_per_detector": 60,
+    "waveform": "A exp(-(t-t0)/tau) sin(2 pi f (t-t0)) [t>=t0]; A from sqrt(sum(h^2))/sigma_whitened = SNR",
+    "detection": "pencil cluster within f_tol of injected f AND rel tau error <= tau_tol AND cluster amp >= offsource amp-99%"
+  },
+  "gate_criteria": {
+    "efficiency_floor_snr_ge_12": 0.9,
+    "efficiency_floor_snr_ge_8": 0.7,
+    "false_alarm_ceiling": 0.01,
+    "per_detector_independent": true,
+    "gate_passes_only_if_both_detectors_pass": true
+  },
+  "statistical_notes": {
+    "draws_per_cell": 20,
+    "efficiency_uncertainty": "binomial sigma at 0.9 with n=20 is ~0.067 \u2014 floors are set above that resolution",
+    "false_alarm_note": "200 bootstrap resamples constrain FA >= 0.005 only at ~2-sigma; very small FA cannot be certified with this budget (declared honestly)"
+  },
+  "r2_gate_run_in_progress": {
+    "started": "2026-10-09 00:04 CEST",
+    "h1_null_amp99": 0.00978,
+    "note": "constants identical to r1 except the two extractor defect fixes; documented in F7 spec r2 entry"
+  },
+  "outcomes_allowed": [
+    "F7_GATE_PASS",
+    "F7_GATE_FAIL"
+  ],
+  "no_threshold_post_adjustment": true,
+  "observational_seal": "maintained"
+}

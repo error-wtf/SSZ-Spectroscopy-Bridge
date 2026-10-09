@@ -153,7 +153,8 @@ def cluster_modes(modes, f_bin=10.0):
                 c["n"] = n
                 break
         else:
-            clusters.append({"f": m["f"], "tau": m["tau"], "amp": m["amp"], "n": 1})
+            clusters.append({"f": m["f"], "tau": m["tau"], "amp": m["amp"],
+                             "max_amp": m["amp"], "n": 1})
     return sorted(clusters, key=lambda c: -c["amp"])[:6]
 
 

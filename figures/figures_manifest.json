@@ -1,0 +1,63 @@
+{
+ "generated_by": "figures/make_figures_v1.py",
+ "sources": {
+  "v3_holdout": "artifacts/GWOSC_V2_F7_GATE_V3_HOLDOUT_RESULT_FAIL.json",
+  "r9_full_matrix": "artifacts/GWOSC_V2_F7_GATE_RESULT_FULL_MATRIX_FAIL.json",
+  "specification": "artifacts/GWOSC_V2_F7_GATE_SPECIFICATION_FROZEN.json"
+ },
+ "key_numbers": {
+  "floor_high": 0.9,
+  "floor_low": 0.7,
+  "fa_ceiling": 0.01,
+  "v3_eff_min_snr12": {
+   "H1": 0.05,
+   "L1": 0.0
+  },
+  "v3_eff_min_snr8": {
+   "H1": 0.05,
+   "L1": 0.0
+  },
+  "v3_fa": {
+   "H1": 0.0125,
+   "L1": 0.01
+  },
+  "fm_eff_min_snr12": {
+   "H1": 0.0,
+   "L1": 0.05
+  },
+  "fm_eff_min_snr8": {
+   "H1": 0.0,
+   "L1": 0.0
+  },
+  "fm_fa": {
+   "H1": 0.0,
+   "L1": 0.01
+  },
+  "v3_gate_pass": false,
+  "fm_gate_pass": false,
+  "v3_verdict": "F7_GATE_FAIL \u2014 real-data run remains BLOCKED; extractor must be fixed",
+  "fm_verdict": "F7_GATE_FAIL \u2014 real-data run remains BLOCKED; extractor must be fixed"
+ },
+ "grid": {
+  "freqs_hz": [
+   80,
+   120,
+   180,
+   250
+  ],
+  "taus_ms": [
+   2,
+   4,
+   8,
+   15
+  ],
+  "snrs": [
+   5,
+   8,
+   12,
+   20,
+   30
+  ],
+  "draws_per_cell": 20
+ }
+}
